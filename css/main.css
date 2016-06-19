@@ -55,8 +55,41 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+/*.container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    align-content: flex-start;
+}
 
 
+.sidebar {
+    order: 1;
+    background-color: blue;
+    height: 100%;
+    width: 33%;
+}
+
+.mapView {
+    order: 2;
+    background-color: red;
+    height: 100%;
+    width: 67%;
+}*/
+
+.sidebar {
+    width: 33%;
+    float: left;
+    background-color: red;
+}
+
+.mapView {
+    width: 67%;
+    float: right;
+    background-color: blue;
+}
 
 
 
