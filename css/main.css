@@ -1,9 +1,10 @@
 /*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */
 
-html {
-    color: #222;
-    font-size: 1em;
-    line-height: 1.4;
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 ::-moz-selection {
@@ -55,52 +56,9 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-/*.container {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: stretch;
-    align-content: flex-start;
-}
-
-
-.sidebar {
-    order: 1;
-    background-color: blue;
+#map {
     height: 100%;
-    width: 33%;
 }
-
-.mapView {
-    order: 2;
-    background-color: red;
-    height: 100%;
-    width: 67%;
-}*/
-
-.sidebar {
-    width: 33%;
-    float: left;
-    background-color: red;
-}
-
-.mapView {
-    width: 67%;
-    float: right;
-    background-color: blue;
-}
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* ==========================================================================
