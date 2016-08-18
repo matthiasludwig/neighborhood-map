@@ -10,6 +10,7 @@
 
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/grd.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
         <link rel="stylesheet" href="css/main.css">
 
     </head>
@@ -19,23 +20,23 @@
         <![endif]-->
 
         <div class="Grid">
-            <div class="Cell -2of12">
-                <h1>I am a Placeholder for the Menu.</h1>
-                <p>Here should be a Search <button>Search!</button></p>
-                <ol>
-                    <li>Result 1</li>
-                    <li>Result 2</li>
-                    <li>Result 3</li>
-                    <li>Result 4</li>
-                    <li>Result 5</li>
-                    <li>Result 6</li>
-                    <li>Result 7</li>
-                    <li>Result 8</li>
-                    <li>Result 9</li>
-                    <li>Result 10</li>
-                </ol>
+            <div class="Cell -2of12 nav">
+                <div class="sidebar">
+                    <p class="title">Neighboorhood Map</p>
+                    <ul class="item">
+                        <li>Result 1</li>
+                        <li>Result 2</li>
+                        <li>Result 3</li>
+                        <li>Result 4</li>
+                        <li>Result 5</li>
+                        <li>Result 6</li>
+                        <li>Result 7</li>
+                        <li>Result 8</li>
+                        <li>Result 9</li>
+                        <li>Result 10</li>
+                    </ul>
+                </div>
             </div>
-
             <!-- Google Maps starts here -->
             <div class="Cell -10of12" id="map"></div>
         </div>
@@ -47,6 +48,7 @@
 
         <script src="js/plugins.js"></script>
         <script src="js/vendor/knockout.js"></script>
+        <script src="js/sidebar.js"></script>
         <script src="js/main.js"></script>
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgKZclTlBcjeCW3cS8uMzbVOB6f6Act3A&libraries=places&callback=init" onerror="googleError()" async defer></script>

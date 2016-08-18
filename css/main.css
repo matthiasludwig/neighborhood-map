@@ -57,14 +57,48 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+.sidebar {
+     position: relative;
+}
+
+.nav {
+    background-color: #333;
+}
+
+.title {
+  font-size: 14px;
+  line-height: 50px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 7px;
+  color: #eee;
+  border-bottom: 1px solid #222;
+  background: #2a2a2a;
+  margin: 0;
+}
+
+.item {
+    margin: 0;
+}
+
+.item li {
+  position: relative;
+  display: block;
+  padding: 15px 15px 15px 0px;
+  font-size: 12px;
+  color: #eee;
+  border-bottom: 1px solid #222;
+}
 
 
 /* ==========================================================================
    Media Queries
    ========================================================================== */
 
-@media only screen and (min-width: 35em) {
-
+@media only screen and (max-width: 768px) {
+    .nav {
+        left: -128px;
+    }
 }
 
 @media print,
