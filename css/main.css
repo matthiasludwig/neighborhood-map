@@ -66,6 +66,11 @@ textarea {
     background-color: #333;
 }
 
+#loadingData {
+    display: none;
+    color: white;
+}
+
 .sidebar {
      position: relative;
 }

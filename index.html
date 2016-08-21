@@ -27,6 +27,7 @@
                     <p class="title">Neighboorhood Map</p>
                     <img class="logo" src="http://placehold.it/100x100">
                     <ul class="item" data-bind="foreach: crimeData">
+                        <p id="loadingData">Please wait while data is loading...</p>
                         <li><span data-bind="text: $index"> </span>: <span data-bind="text: $data"></span></li>
                     </ul>
                 </div>

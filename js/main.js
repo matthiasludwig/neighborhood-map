@@ -28,14 +28,25 @@ function init() {
             "$where" : "date between '2016-08-01T00:00:00' and '2016-08-20T14:00:00'",
             "$order" : "date DESC",
             "$$app_token" : "FOWqIJ6wgZFV3PBnSg7DKip6V"
+        },
+        beforeSend: function(){
+            $('#loadingData').show();
+        },
+        success: function(data){
+            console.log("Retrieved " + data.length + " records from the dataset!");
+            console.log(data);
+        },
+        complete: function(){
+          $('#loadingData').hide();
         }
-    })
-    .done(function (data) {
-      console.log("Retrieved " + data.length + " records from the dataset!");
-      console.log(data);
     });
 }
 
+function saveData(data) {
+    console.log("Retrieved " + data.length + " records from the dataset!");
+    // $('#loadingData').hide();
+    console.log(data);
+}
 function testMarker() {
 
      var marker = new google.maps.Marker({
