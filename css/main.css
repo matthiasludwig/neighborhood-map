@@ -56,13 +56,22 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+#toggle {
+    display: none;
+    color: #eee;
+    text-align: center;
+}
+
+#nav {
+    background-color: #333;
+}
 
 .sidebar {
      position: relative;
 }
 
-.nav {
-    background-color: #333;
+.logo {
+    display: none;
 }
 
 .title {
@@ -75,6 +84,8 @@ textarea {
   border-bottom: 1px solid #222;
   background: #2a2a2a;
   margin: 0;
+  padding: 0px 10px 0px 10px;
+
 }
 
 .item {
@@ -94,12 +105,46 @@ textarea {
 /* ==========================================================================
    Media Queries
    ========================================================================== */
+ @media only screen and (max-width: 1350px) {
+     .title {
+         font-size: 10px;
+         letter-spacing: 5px;
+     }
+
+ @media only screen and (max-width: 1000px) {
+     .logo {
+         display: flex;
+         margin: auto;
+     }
+     .title {
+         display: none;
+     }
+ }
+
+
 
 @media only screen and (max-width: 768px) {
-    .nav {
-        left: -128px;
+
+    #nav {
+        width: 50px;
     }
-}
+
+    #toggle {
+        display: block;
+    }
+
+    .sidebar {
+        position: absolute;
+        background-color: #333;
+        -webkit-transform: translate(-300px, 0);
+        transform: translate(-300px, 0);
+        z-index: 1;
+    }
+
+    .open {
+      -webkit-transform: translate(0, 0);
+      transform: translate(0, 0);
+    }
 
 @media print,
        (-o-min-device-pixel-ratio: 5/4),

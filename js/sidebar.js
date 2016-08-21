@@ -1,3 +1,3 @@
-$('button').on('click', function(){
-    $('#sidebar').toggleClass('close');
+$('#toggle').on('click', function(){
+    $('.sidebar').toggleClass('open');
 })
