@@ -2,7 +2,7 @@
 var map;
 var startingLoc = {lat: 37.77493, lng: -122.419416};
 
-var crimeData = ko.observableArray(["Test", "Test", "Test", "Test", "Test"]);
+var crimeData = ko.observableArray();
 
 console.log(new Date());
 
@@ -24,7 +24,7 @@ function init() {
         url: "https://data.sfgov.org/resource/cuks-n6tp.json",
         type: "GET",
         data: {
-            "$limit" : 5000,
+            "$limit" : 10,
             "$where" : "date between '2016-08-01T00:00:00' and '2016-08-20T14:00:00'",
             "$order" : "date DESC",
             "$$app_token" : "FOWqIJ6wgZFV3PBnSg7DKip6V"
@@ -35,6 +35,9 @@ function init() {
         success: function(data){
             console.log("Retrieved " + data.length + " records from the dataset!");
             console.log(data);
+            for (var i = 0, j = data.length; i < j; i++){
+                crimeData.push(data[i]);
+            }
         },
         complete: function(){
           $('#loadingData').hide();
