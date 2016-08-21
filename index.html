@@ -26,17 +26,8 @@
                 <div class="sidebar">
                     <p class="title">Neighboorhood Map</p>
                     <img class="logo" src="http://placehold.it/100x100">
-                    <ul class="item">
-                        <li>Result 1</li>
-                        <li>Result 2</li>
-                        <li>Result 3</li>
-                        <li>Result 4</li>
-                        <li>Result 5</li>
-                        <li>Result 6</li>
-                        <li>Result 7</li>
-                        <li>Result 8</li>
-                        <li>Result 9</li>
-                        <li>Result 10</li>
+                    <ul class="item" data-bind="foreach: crimeData">
+                        <li><span data-bind="text: $index"> </span>: <span data-bind="text: $data"></span></li>
                     </ul>
                 </div>
             </div>

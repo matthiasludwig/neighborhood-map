@@ -3,8 +3,13 @@ var map;
 var startingLoc = {lat: 37.77493, lng: -122.419416};
 var locations = [];
 
+var crimeData = ko.observableArray([
+    "Result", "Result", "Result", "Result", "Result", "Result", "Result", "Result", "Result", "Result"
+]);
+
+
 function init() {
-    //Get a Map
+    // Get a Map
     map = new google.maps.Map(document.getElementById('map'), {
     center: startingLoc,
     zoom: 13,
@@ -98,3 +103,5 @@ function markerColor(color) {
 function googleError() {
     console.log("Google Maps could not be loaded. Update View accordingly > TODO");
 }
+
+ko.applyBindings();
