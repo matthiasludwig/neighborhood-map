@@ -64,6 +64,7 @@ textarea {
 
 #nav {
     background-color: #333;
+    overflow: scroll;
 }
 
 #loadingData {

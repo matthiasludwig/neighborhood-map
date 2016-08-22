@@ -1,5 +1,5 @@
 // Global Variables declared
-// var map;
+var map;
 var startingLoc = {lat: 37.77493, lng: -122.419416}; // Lat/Lng for San Francisco, CA
 var crimeData = ko.observableArray();
 
@@ -11,12 +11,6 @@ function init() {
     zoom: 13,
     mapTypeControl: false
   });
-  var marker = new google.maps.Marker({
-      position: startingLoc,
-      map: map,
-      animation: google.maps.Animation.DROP,
-      title: 'Hello World!'
-    });
   getData();
  }
 
@@ -26,11 +20,12 @@ function init() {
         url: "https://data.sfgov.org/resource/cuks-n6tp.json",
         type: "GET",
         data: {
-            "$limit" : 50,
+            "$limit" : 100,
             "$where" : "date between '2016-08-01T00:00:00' and '2016-08-20T14:00:00'",
             "$order" : "date DESC",
             "$$app_token" : "FOWqIJ6wgZFV3PBnSg7DKip6V"
         },
+        // Loading animation
         beforeSend: function(){
             $('#loadingData').show();
         },
@@ -50,7 +45,12 @@ function init() {
             }
         },
         complete: function(){
-          $('#loadingData').hide();
+            // Hiding the loading animation
+            $('#loadingData').hide();
+        },
+        error: function(){
+            // TODO Implement Error Handling for failing of ajax Request
+            console.log("API could not be loaded");
         }
     });
 }
