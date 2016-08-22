@@ -1,10 +1,7 @@
 // Global Variables declared
-var map;
-var startingLoc = {lat: 37.77493, lng: -122.419416};
-
+// var map;
+var startingLoc = {lat: 37.77493, lng: -122.419416}; // Lat/Lng for San Francisco, CA
 var crimeData = ko.observableArray();
-
-console.log(new Date());
 
 function init() {
     console.log("init() has been called");
@@ -14,7 +11,12 @@ function init() {
     zoom: 13,
     mapTypeControl: false
   });
-  testMarker();
+  var marker = new google.maps.Marker({
+      position: startingLoc,
+      map: map,
+      animation: google.maps.Animation.DROP,
+      title: 'Hello World!'
+    });
   getData();
  }
 
@@ -24,7 +26,7 @@ function init() {
         url: "https://data.sfgov.org/resource/cuks-n6tp.json",
         type: "GET",
         data: {
-            "$limit" : 10,
+            "$limit" : 50,
             "$where" : "date between '2016-08-01T00:00:00' and '2016-08-20T14:00:00'",
             "$order" : "date DESC",
             "$$app_token" : "FOWqIJ6wgZFV3PBnSg7DKip6V"
@@ -33,10 +35,18 @@ function init() {
             $('#loadingData').show();
         },
         success: function(data){
+            // TODO: DELETE. Just for debugging
             console.log("Retrieved " + data.length + " records from the dataset!");
             console.log(data);
+
             for (var i = 0, j = data.length; i < j; i++){
                 crimeData.push(data[i]);
+
+                var marker = new google.maps.Marker({
+                    position: {lat: parseFloat(data[i].y), lng: parseFloat(data[i].x)},
+                    title: data[i].descript,
+                    map: map,
+                });
             }
         },
         complete: function(){
@@ -44,20 +54,5 @@ function init() {
         }
     });
 }
-
-function saveData(data) {
-    console.log("Retrieved " + data.length + " records from the dataset!");
-    // $('#loadingData').hide();
-    console.log(data);
-}
-function testMarker() {
-
-     var marker = new google.maps.Marker({
-         position: {"lat": 37.709473, "lng": -122.431657},
-         title:"Hello World!"
-     });
-      marker.setMap(map);
-      console.log("Marker set to 'map'");
- }
 
 ko.applyBindings();
