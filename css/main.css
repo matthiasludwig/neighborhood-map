@@ -145,7 +145,7 @@ textarea {
         position: absolute;
         background-color: #333;
         -webkit-transform: translate(-300px, 0);
-        transform: translate(-300px, 0);
+        transform: translate(-100vw, 0);
         z-index: 1;
     }
 

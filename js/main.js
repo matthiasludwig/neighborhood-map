@@ -58,10 +58,12 @@ function createMarker(crimeData) {
     for (var i = 0, j = crimeData.length; i < j; i++) {
         var position = {lat: parseFloat(crimeData[i].y), lng: parseFloat(crimeData[i].x)};
         var title = crimeData[i].descript;
+        var category = crimeData[i].category;
         // Create a marker per location, and put into markers array.
         var marker = new google.maps.Marker({
             position: position,
             title: title,
+            category: category, 
             map: map,
             animation: google.maps.Animation.DROP,
             id: i
