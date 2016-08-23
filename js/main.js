@@ -65,6 +65,7 @@ function createMarker(crimeData) {
         var time = formatTime(crimeData[i].time);
         var dayofweek = crimeData[i].dayofweek;
         var date = formatDate(crimeData[i].date);
+        var icon = makeMarkerIcon(crimeData[i].resolution);
         // Create a marker per location, and put into markers array.
         var marker = new google.maps.Marker({
             position: position,
@@ -77,6 +78,7 @@ function createMarker(crimeData) {
             time: time,
             date: date,
             map: map,
+            icon: icon,
             animation: google.maps.Animation.DROP,
             id: i
         });
@@ -103,6 +105,17 @@ function populateInfoWindow(marker, InfoWindow) {
         InfoWindow.marker = null;
       });
     }
+}
+
+function makeMarkerIcon(type) {
+    var markerImage = {
+      url: 'icons/' + type + '.png',
+      size: new google.maps.Size(32, 32),
+      origin: new google.maps.Point(0, 0),
+      anchor: new google.maps.Point(0, 32),
+    //   scaledSize: new google.maps.Size(25, 25)
+    };
+  return markerImage;
 }
 
 function formatTime(time) {
