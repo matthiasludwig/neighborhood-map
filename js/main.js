@@ -1,11 +1,14 @@
 // Global Variables declared
 var map;
+var largeInfowindow;
 var startingLoc = {lat: 37.77493, lng: -122.419416}; // Lat/Lng for San Francisco, CA
 var crimeData = [];
 var displayData = ko.observableArray();
 
 function init() {
     console.log("init() has been called");
+    // Fill Variable for InfoWindow (used later)
+    largeInfowindow = new google.maps.InfoWindow();
     // Get a Map
     map = new google.maps.Map(document.getElementById('map'), {
     center: startingLoc,
@@ -51,28 +54,36 @@ function init() {
 }
 
 function createMarker(crimeData) {
-    console.log("createMarker() has been called");
+    console.log("createMarker() has been called"); //TODO JUST FOR DEBUGGING DELETE BEFORE LIVE
     for (var i = 0, j = crimeData.length; i < j; i++) {
-        console.log("Marker" + i + "has been created.");
-      var position = {lat: parseFloat(crimeData[i].y), lng: parseFloat(crimeData[i].x)};
-      var title = crimeData[i].descript;
-      // Create a marker per location, and put into markers array.
-       var marker = new google.maps.Marker({
-        position: position,
-        title: title,
-        map: map,
-        animation: google.maps.Animation.DROP,
-        id: i
-      });
-      displayData.push(marker);
-      marker.addListener('click', function() {
-        populateInfoWindow(this, largeInfowindow);
-      });
+        var position = {lat: parseFloat(crimeData[i].y), lng: parseFloat(crimeData[i].x)};
+        var title = crimeData[i].descript;
+        // Create a marker per location, and put into markers array.
+        var marker = new google.maps.Marker({
+            position: position,
+            title: title,
+            map: map,
+            animation: google.maps.Animation.DROP,
+            id: i
+        });
+        displayData.push(marker);
+        marker.addListener('click', function() {
+            populateInfoWindow(this, largeInfowindow);
+        });
     }
-    console.log(displayData()[1]);
 }
 
 function populateInfoWindow(marker, InfoWindow) {
-    console.log("populateInfoWindow() has been called");
+    if (InfoWindow.marker != marker) {
+      InfoWindow.marker = marker;
+      InfoWindow.setContent('<div>' + marker.title + '</div>');
+      InfoWindow.open(map, marker);
+      // Make sure the marker property is cleared if the infowindow is closed.
+      InfoWindow.addListener('closeclick', function() {
+        InfoWindow.marker = null;
+      });
+    }
 }
+
+// Knockout.js applyBindings for the View
 ko.applyBindings();
