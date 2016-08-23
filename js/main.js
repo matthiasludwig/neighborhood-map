@@ -24,7 +24,7 @@ function init() {
         url: "https://data.sfgov.org/resource/cuks-n6tp.json",
         type: "GET",
         data: {
-            "$limit" : 10,
+            "$limit" : 100,
             "$where" : "date between '2016-08-01T00:00:00' and '2016-08-20T14:00:00'",
             "$order" : "date DESC",
             "$$app_token" : "FOWqIJ6wgZFV3PBnSg7DKip6V"
@@ -59,11 +59,23 @@ function createMarker(crimeData) {
         var position = {lat: parseFloat(crimeData[i].y), lng: parseFloat(crimeData[i].x)};
         var title = crimeData[i].descript;
         var category = crimeData[i].category;
+        var address = crimeData[i].address;
+        var pddistrict = crimeData[i].pddistrict;
+        var resolution = crimeData[i].resolution;
+        var time = formatTime(crimeData[i].time);
+        var dayofweek = crimeData[i].dayofweek;
+        var date = formatDate(crimeData[i].date);
         // Create a marker per location, and put into markers array.
         var marker = new google.maps.Marker({
             position: position,
             title: title,
-            category: category, 
+            category: category,
+            address: address,
+            pddistrict: pddistrict,
+            resolution: resolution,
+            dayofweek: dayofweek,
+            time: time,
+            date: date,
             map: map,
             animation: google.maps.Animation.DROP,
             id: i
@@ -78,13 +90,37 @@ function createMarker(crimeData) {
 function populateInfoWindow(marker, InfoWindow) {
     if (InfoWindow.marker != marker) {
       InfoWindow.marker = marker;
-      InfoWindow.setContent('<div>' + marker.title + '</div>');
+      InfoWindow.setContent(
+        '<p class="markerTitle">' + marker.category + '</p><p>' + marker.title + '</p>' +
+        '<p><span>When: </span>'+ marker.dayofweek + ', ' + marker.date + ' at ' + marker.time + '</p>' +
+        '<p><span>Address: </span>' + marker.address + '</p>' +
+        '<p><span>Police District: </span>' + marker.pddistrict + '</p>' +
+        '<p><span>Resolution: </span>' + marker.resolution + '</p>'
+        );
       InfoWindow.open(map, marker);
       // Make sure the marker property is cleared if the infowindow is closed.
       InfoWindow.addListener('closeclick', function() {
         InfoWindow.marker = null;
       });
     }
+}
+
+function formatTime(time) {
+    var hour = parseInt(time[0] + time[1]);
+    var minute = time[3] + time[4];
+    if (hour > 12) {
+        return (hour%12) + ':' + minute + ' PM';
+    }
+    else {
+        return hour + ':' + minute + ' AM';
+    }
+}
+
+function formatDate(date) {
+    var day = date[8] + date[9];
+    var month = date[5] + date[6];
+    var year = date[0] + date[1] + date[2] + date[3];
+    return month + '/' + day + '/' + year;
 }
 
 // Knockout.js applyBindings for the View
