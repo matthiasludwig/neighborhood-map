@@ -19,13 +19,13 @@ function init() {
  }
 
  function getData() {
-    console.log("getData() has been called");
+    console.log("getData() has been called with these parameters: ");
     $.ajax({
         url: "https://data.sfgov.org/resource/cuks-n6tp.json",
         type: "GET",
         data: {
-            "$limit" : 100,
-            "$where" : "date between '2016-08-01T00:00:00' and '2016-08-20T14:00:00'",
+            // "$limit" : 100,
+            "$where" : "date between '2016-08-08T00:00:00' and '2016-08-10T00:00:00'",
             "$order" : "date DESC",
             "$$app_token" : "FOWqIJ6wgZFV3PBnSg7DKip6V"
         },
@@ -113,7 +113,6 @@ function makeMarkerIcon(type) {
       size: new google.maps.Size(32, 32),
       origin: new google.maps.Point(0, 0),
       anchor: new google.maps.Point(0, 32),
-    //   scaledSize: new google.maps.Size(25, 25)
     };
   return markerImage;
 }
