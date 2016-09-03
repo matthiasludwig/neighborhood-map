@@ -107,6 +107,16 @@ function populateInfoWindow(marker, InfoWindow) {
     }
 }
 
+function mouseOver(listItem) {
+    var highlighted = "active";
+    listItem.icon = makeMarkerIcon(highlighted);
+    listItem.setMap(map);
+}
+
+function mouseOut(listItem) {
+    listItem.icon = makeMarkerIcon(listItem.resolution);
+    listItem.setMap(map);
+}
 function makeMarkerIcon(type) {
     var markerImage = {
       url: 'icons/' + type + '.png',
