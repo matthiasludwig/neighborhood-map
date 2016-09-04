@@ -36,7 +36,7 @@ function init() {
         success: function(data){
             // TODO: DELETE. Just for debugging
             console.log("Retrieved " + data.length + " records from the dataset!");
-            console.log(data);
+            // console.log(data);
             for (var i = 0, j = data.length; i < j; i++){
                 crimeData.push(data[i]);
             }
@@ -85,6 +85,7 @@ function createMarker(crimeData) {
         displayData.push(marker);
         marker.addListener('click', function() {
             populateInfoWindow(this, largeInfowindow);
+            highlightListItem(this);
         });
     }
 }
@@ -117,6 +118,18 @@ function mouseOut(listItem) {
     listItem.icon = makeMarkerIcon(listItem.resolution);
     listItem.setMap(map);
 }
+
+function clickItem(listItem) {
+    map.setZoom(15);
+    map.panTo(listItem.position);
+    populateInfoWindow(listItem, largeInfowindow);
+}
+
+function highlightListItem(marker) {
+    console.log("highlightListItem() was called");
+}
+
+
 function makeMarkerIcon(type) {
     var markerImage = {
       url: 'icons/' + type + '.png',
