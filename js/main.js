@@ -2,8 +2,8 @@
 var map;
 var largeInfowindow;
 var startingLoc = {lat: 37.77493, lng: -122.419416}; // Lat/Lng for San Francisco, CA
-var crimeData = [];
 var displayData = ko.observableArray();
+var selectedItem = ko.observable();
 
 function init() {
     console.log("init() has been called");
@@ -32,21 +32,18 @@ function init() {
         // Loading animation
         beforeSend: function(){
             $('#loadingData').show();
-            $("body").css("cursor", "progress");
+            $('body').css("cursor", "progress");
         },
         success: function(data){
             // TODO: DELETE. Just for debugging
             console.log("Retrieved " + data.length + " records from the dataset!");
-            // console.log(data);
-            for (var i = 0, j = data.length; i < j; i++){
-                crimeData.push(data[i]);
-            }
+            console.log(data);
+            createMarker(data);
         },
-        complete: function(){
+        complete: function(data){
             // Hiding the loading animation
             $('#loadingData').hide();
-            $("body").css("cursor", "default");
-            createMarker(crimeData);
+            $('body').css("cursor", "default");
         },
         error: function(){
             // TODO Implement Error Handling for failing of ajax Request
