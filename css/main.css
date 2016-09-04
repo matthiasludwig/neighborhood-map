@@ -57,10 +57,6 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-   .highlighted {
-       color: red;
-   }
-
 #toggle {
     display: none;
     color: #eee;
@@ -77,6 +73,10 @@ textarea {
     color: white;
     text-align: center;
     margin-top: 20px;
+}
+
+.listItem {
+    cursor: pointer;
 }
 
 .sidebar {

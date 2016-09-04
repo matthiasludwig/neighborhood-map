@@ -32,6 +32,7 @@ function init() {
         // Loading animation
         beforeSend: function(){
             $('#loadingData').show();
+            $("body").css("cursor", "progress");
         },
         success: function(data){
             // TODO: DELETE. Just for debugging
@@ -44,6 +45,7 @@ function init() {
         complete: function(){
             // Hiding the loading animation
             $('#loadingData').hide();
+            $("body").css("cursor", "default");
             createMarker(crimeData);
         },
         error: function(){
