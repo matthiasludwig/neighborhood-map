@@ -24,8 +24,8 @@ function init() {
         url: "https://data.sfgov.org/resource/cuks-n6tp.json",
         type: "GET",
         data: {
-            "$limit" : 25,
-            "$where" : "date between '2016-08-08T00:00:00' and '2016-08-10T00:00:00'",
+            // "$limit" : 100,
+            "$where" : "date between '2016-08-08T00:00:00' and '2016-08-09T00:00:00'",
             "$order" : "date DESC",
             "$$app_token" : "FOWqIJ6wgZFV3PBnSg7DKip6V"
         },
@@ -38,7 +38,7 @@ function init() {
         success: function(data){
             // TODO: DELETE. Just for debugging
             console.log("Retrieved " + data.length + " records from the dataset!");
-            console.log(data);
+            // console.log(data);
             createMarker(data);
         },
         complete: function(data){
@@ -131,6 +131,7 @@ function clickItem(listItem) {
 
 function highlightListItem(marker, scrollIntoView) {
     selectedItem(marker.pdid);
+    $('#resultList').show();
     if (scrollIntoView) {
         var loc = document.getElementsByClassName('itemSelect');
         loc[0].scrollIntoView(true);

@@ -31,13 +31,17 @@
                     <div class="menu">
                         <div id="logos">
                             <a href="https://www.facebook.com/matthiasludw" target="_blank" id="facebook"><i class="ss-icon">facebook</i></a>
-                            &nbsp;<a href="https://www.twitter.com.com/matthiasludw" target="_blank" id="twitter"><i class="ss-icon">twitter</i></a>
+                            &nbsp;<a href="https://www.twitter.com/matthiasludw" target="_blank" id="twitter"><i class="ss-icon">twitter</i></a>
                             &nbsp;<a href="https://www.linkedin.com/in/ludwigmatthias" target="_blank" id="linkedin"><i class="ss-icon">linkedin</i></a>
                             &nbsp;<a href="https://github.com/matthiasludwig" target="_blank" id="github"><i class="ss-icon">github</i></a>
                         </div>
                     </div>
                     <div class="menu">
                         <p class="menuButton"><i class="fa fa-info-circle" aria-hidden="true"></i></i> About</p>
+                        <div class="collapsable">
+                            <p class="aboutText">Nothing of value comes to you without fucking working at it. To go partway is easy, but mastering anything requires hard fucking work. Form follows fucking function. Use your fucking hands. Remember it’s called the creative process, it’s not the creative fucking moment. What’s important is the fucking drive to see a project through no matter what.</p>
+                            <p class="aboutText">Must-do is a good fucking master. Don’t get hung up on things that don’t fucking work. Fuck. Saul Bass on failure: Failure is built into creativity… the creative act involves this element of ‘newness’ and ‘experimentalism,’ then one must expect and accept the fucking possibility of failure. Don’t worry about what other people fucking think.</p>
+                        </div>
                     </div>
                     <div class="menu">
                         <p class="menuButton"><i class="fa fa-cogs" aria-hidden="true"></i> Settings</p>
@@ -60,7 +64,7 @@
                     <!-- Crime Data List -->
                     <div class="menu">
                         <p class="menuButton"><i class="fa fa-list" aria-hidden="true"></i> Results</p>
-                        <div class="collapsable">
+                        <div class="collapsable" id="resultList">
                             <ul class="item" data-bind="foreach: displayData ">
                                 <li class="listItem" data-bind="event: { mouseover: mouseOver, mouseout: mouseOut, click: clickItem}, css: { 'itemSelect': pdid === selectedItem() }"><span data-bind="text: category"></span>: <span data-bind="text: title"></span></li>
                             </ul>
