@@ -45,6 +45,15 @@ textarea {
     resize: vertical;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:visited {
+    color: inherit;
+}
+
 .browserupgrade {
     margin: 0.2em 0;
     background: #ccc;
@@ -75,9 +84,20 @@ textarea {
     margin-top: 20px;
 }
 
+.menu {
+    color: white;
+    text-align: center;
+    padding-top: 10px;
+    border-bottom: 1px solid white;
+}
+
+.menu > ul {
+    text-align: left;
+}
+
 .itemSelect {
-    /*background-color: #0088ff;*/
     background-color: white;
+    color: black !important;
 }
 
 .itemSelect > span {
@@ -94,6 +114,24 @@ textarea {
 
 .logo {
     display: none;
+}
+
+#logos {
+    font-size: 1.5em;
+    padding: 10px;
+}
+
+#facebook:hover {
+    color: #3b5998;
+}
+#twitter:hover {
+    color: #1da1f2;
+}
+#linkedin:hover {
+    color: #1c87bd;
+}
+#github:hover {
+    color: black;
 }
 
 .title {

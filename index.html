@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/grd.css">
         <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="fonts/ss-social-circle.css">
         <link rel="stylesheet" href="css/main.css">
 
     </head>
@@ -24,12 +25,30 @@
                 <!-- Hamburger Menu (not visible until Breakpoint is hit) -->
                 <div id="toggle"><i class="fa fa-bars fa-2x"></i></div>
                 <div class="sidebar">
+                    <img class="logo" src="http://placehold.it/100x100"> <!-- Logo for responsive Layout -->
                     <p class="title">Crimemap<br> San Francisco</p>
-                    <img class="logo" src="http://placehold.it/100x100">
-                    <div id="loadingData"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span></div>
-                    <ul class="item" data-bind="foreach: displayData ">
-                        <li class="listItem" data-bind="event: { mouseover: mouseOver, mouseout: mouseOut, click: clickItem}, css: { 'itemSelect': pdid === selectedItem() }"><span data-bind="text: category"> :</span> <span data-bind="text: title"></span></li>
-                    </ul>
+                    <div id="loadingData"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span></div> <!-- Loading Animation -->
+                    <div class="menu">
+                        <div id="logos">
+                            <a href="https://www.facebook.com/matthiasludw" target="_blank" id="facebook"><i class="ss-icon">facebook</i></a>
+                            &nbsp;<a href="https://www.twitter.com.com/matthiasludw" target="_blank" id="twitter"><i class="ss-icon">twitter</i></a>
+                            &nbsp;<a href="https://www.linkedin.com/in/ludwigmatthias" target="_blank" id="linkedin"><i class="ss-icon">linkedin</i></a>
+                            &nbsp;<a href="https://github.com/matthiasludwig" target="_blank" id="github"><i class="ss-icon">github</i></a>
+                        </div>
+                    </div>
+                    <div class="menu">
+                        <p><i class="fa fa-info-circle" aria-hidden="true"></i></i> About</p>
+                    </div>
+                    <div class="menu">
+                        <p><i class="fa fa-cogs" aria-hidden="true"></i> Settings</p>
+                    </div>
+                    <!-- Crime Data List -->
+                    <div class="menu">
+                        <p><i class="fa fa-list" aria-hidden="true"></i> Results</p>
+                        <ul class="item" data-bind="foreach: displayData ">
+                            <li class="listItem" data-bind="event: { mouseover: mouseOver, mouseout: mouseOut, click: clickItem}, css: { 'itemSelect': pdid === selectedItem() }"><span data-bind="text: category"></span>: <span data-bind="text: title"></span></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <!-- Google Maps starts here -->
@@ -42,6 +61,7 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
         <script src="js/plugins.js"></script>
+        <script src="fonts/ss-social.js"></script>
         <script src="js/vendor/knockout.js"></script>
         <script src="js/sidebar.js"></script>
         <script src="js/main.js"></script>
