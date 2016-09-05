@@ -3,10 +3,12 @@ $('#toggle').on('click', function(){
 })
 
 $('.menuButton').on('click', function(){
-    console.log("A menu item was clicked!");
     $(this).next('.collapsable').toggle();
 })
 
 $('#submitButton').on('click', function(){
-    console.log("The Submit Button has been clicked");
+    for (var i = 1; i <= 10; i++) {
+        var cbox = "#cbox" + i.toString();
+        console.log($(cbox).val() + ($(cbox).is(':checked')));
+    }
 })

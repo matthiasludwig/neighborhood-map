@@ -24,7 +24,7 @@ function init() {
         url: "https://data.sfgov.org/resource/cuks-n6tp.json",
         type: "GET",
         data: {
-            // "$limit" : 100,
+            "$limit" : 100,
             "$where" : "date between '2016-08-08T00:00:00' and '2016-08-09T00:00:00'",
             "$order" : "date DESC",
             "$$app_token" : "FOWqIJ6wgZFV3PBnSg7DKip6V"
@@ -97,7 +97,7 @@ function populateInfoWindow(marker, InfoWindow) {
     if (InfoWindow.marker != marker) {
       InfoWindow.marker = marker;
       InfoWindow.setContent(
-        '<p class="markerTitle">' + marker.category + '</p><p>' + marker.title + '</p>' +
+        '<p class="markerTitle">' + marker.category + '</p><p style="text-align:center;">' + marker.title + '</p>' +
         '<p><span>When: </span>'+ marker.dayofweek + ', ' + marker.date + ' at ' + marker.time + '</p>' +
         '<p><span>Address: </span>' + marker.address + '</p>' +
         '<p><span>Police District: </span>' + marker.pddistrict + '</p>' +
