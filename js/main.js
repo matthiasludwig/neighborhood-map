@@ -31,6 +31,7 @@ function init() {
         },
         // Loading animation
         beforeSend: function(){
+            $('.menu').toggle();
             $('#loadingData').show();
             $('body').css("cursor", "progress");
         },
@@ -43,6 +44,7 @@ function init() {
         complete: function(data){
             // Hiding the loading animation
             $('#loadingData').hide();
+            $('.menu').toggle();
             $('body').css("cursor", "default");
         },
         error: function(){

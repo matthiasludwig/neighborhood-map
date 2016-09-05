@@ -37,17 +37,34 @@
                         </div>
                     </div>
                     <div class="menu">
-                        <p><i class="fa fa-info-circle" aria-hidden="true"></i></i> About</p>
+                        <p class="menuButton"><i class="fa fa-info-circle" aria-hidden="true"></i></i> About</p>
                     </div>
                     <div class="menu">
-                        <p><i class="fa fa-cogs" aria-hidden="true"></i> Settings</p>
+                        <p class="menuButton"><i class="fa fa-cogs" aria-hidden="true"></i> Settings</p>
+                        <div class="collapsable">
+                            <form class="optionForm">
+                                <input type="checkbox" name="disrict" value="Bayview"> Bayview<br>
+                                <input type="checkbox" name="disrict" value="Centra"> Centra<br>
+                                <input type="checkbox" name="disrict" value="Ingleside"> Ingleside<br>
+                                <input type="checkbox" name="disrict" value="Mission"> Mission<br>
+                                <input type="checkbox" name="disrict" value="Northern"> Northern<br>
+                                <input type="checkbox" name="disrict" value="Park"> Park<br>
+                                <input type="checkbox" name="disrict" value="Richmond"> Richmond<br>
+                                <input type="checkbox" name="disrict" value="Southern"> Southern<br>
+                                <input type="checkbox" name="disrict" value="Taraval"> Taraval<br>
+                                <input type="checkbox" name="disrict" value="Tenderloin"> Tenderloin<br>
+                            </form>
+                            <div id="submitButton">Submit</div>
+                        </div>
                     </div>
                     <!-- Crime Data List -->
                     <div class="menu">
-                        <p><i class="fa fa-list" aria-hidden="true"></i> Results</p>
-                        <ul class="item" data-bind="foreach: displayData ">
-                            <li class="listItem" data-bind="event: { mouseover: mouseOver, mouseout: mouseOut, click: clickItem}, css: { 'itemSelect': pdid === selectedItem() }"><span data-bind="text: category"></span>: <span data-bind="text: title"></span></li>
-                        </ul>
+                        <p class="menuButton"><i class="fa fa-list" aria-hidden="true"></i> Results</p>
+                        <div class="collapsable">
+                            <ul class="item" data-bind="foreach: displayData ">
+                                <li class="listItem" data-bind="event: { mouseover: mouseOver, mouseout: mouseOut, click: clickItem}, css: { 'itemSelect': pdid === selectedItem() }"><span data-bind="text: category"></span>: <span data-bind="text: title"></span></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -63,7 +80,7 @@
         <script src="js/plugins.js"></script>
         <script src="fonts/ss-social.js"></script>
         <script src="js/vendor/knockout.js"></script>
-        <script src="js/sidebar.js"></script>
+        <script src="js/menu.js"></script>
         <script src="js/main.js"></script>
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgKZclTlBcjeCW3cS8uMzbVOB6f6Act3A&libraries=geometry&callback=init" onerror="googleError()" async defer></script>
