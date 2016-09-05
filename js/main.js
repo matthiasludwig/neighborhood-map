@@ -24,7 +24,7 @@ function init() {
         url: "https://data.sfgov.org/resource/cuks-n6tp.json",
         type: "GET",
         data: {
-            // "$limit" : 100,
+            "$limit" : 25,
             "$where" : "date between '2016-08-08T00:00:00' and '2016-08-10T00:00:00'",
             "$order" : "date DESC",
             "$$app_token" : "FOWqIJ6wgZFV3PBnSg7DKip6V"
@@ -65,6 +65,7 @@ function createMarker(crimeData) {
         var dayofweek = crimeData[i].dayofweek;
         var date = formatDate(crimeData[i].date);
         var icon = makeMarkerIcon(crimeData[i].resolution);
+        var pdid = crimeData[i].pdid;
         // Create a marker per location, and put into markers array.
         var marker = new google.maps.Marker({
             position: position,
@@ -72,6 +73,7 @@ function createMarker(crimeData) {
             category: category,
             address: address,
             pddistrict: pddistrict,
+            pdid: pdid,
             resolution: resolution,
             dayofweek: dayofweek,
             time: time,
@@ -125,7 +127,10 @@ function clickItem(listItem) {
 }
 
 function highlightListItem(marker) {
-    console.log("highlightListItem() was called");
+    selectedItem(marker.pdid);
+    var loc = document.getElementsByClassName('itemSelect');
+    console.log(loc);
+    loc[0].scrollIntoView(true);
 }
 
 

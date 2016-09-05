@@ -28,7 +28,7 @@
                     <img class="logo" src="http://placehold.it/100x100">
                     <div id="loadingData"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span></div>
                     <ul class="item" data-bind="foreach: displayData ">
-                        <li class="listItem" data-bind="event: { mouseover: mouseOver, mouseout: mouseOut, click: clickItem}"><span data-bind="text: category"> </span>: <span data-bind="text: title"></span></li>
+                        <li class="listItem" data-bind="event: { mouseover: mouseOver, mouseout: mouseOut, click: clickItem}, css: { 'itemSelect': pdid === selectedItem() }"><span data-bind="text: category"> </span>: <span data-bind="text: title"></span></li>
                     </ul>
                 </div>
             </div>

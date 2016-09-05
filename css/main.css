@@ -75,6 +75,10 @@ textarea {
     margin-top: 20px;
 }
 
+.itemSelect {
+    background-color: white;
+}
+
 .listItem {
     cursor: pointer;
 }
