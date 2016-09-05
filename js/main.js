@@ -86,7 +86,7 @@ function createMarker(crimeData) {
         displayData.push(marker);
         marker.addListener('click', function() {
             populateInfoWindow(this, largeInfowindow);
-            highlightListItem(this);
+            highlightListItem(this, true);
         });
     }
 }
@@ -121,16 +121,18 @@ function mouseOut(listItem) {
 }
 
 function clickItem(listItem) {
+    highlightListItem(listItem, false);
     map.setZoom(15);
     map.panTo(listItem.position);
     populateInfoWindow(listItem, largeInfowindow);
 }
 
-function highlightListItem(marker) {
+function highlightListItem(marker, scrollIntoView) {
     selectedItem(marker.pdid);
-    var loc = document.getElementsByClassName('itemSelect');
-    console.log(loc);
-    loc[0].scrollIntoView(true);
+    if (scrollIntoView) {
+        var loc = document.getElementsByClassName('itemSelect');
+        loc[0].scrollIntoView(true);
+    }
 }
 
 

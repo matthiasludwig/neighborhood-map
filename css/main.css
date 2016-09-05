@@ -76,7 +76,12 @@ textarea {
 }
 
 .itemSelect {
+    /*background-color: #0088ff;*/
     background-color: white;
+}
+
+.itemSelect > span {
+    color: black;
 }
 
 .listItem {
