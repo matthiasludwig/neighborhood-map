@@ -63,7 +63,7 @@
                     <div class="menu">
                         <p class="menuButton"><i class="fa fa-list" aria-hidden="true"></i> Results</p>
                         <div class="collapsable" id="resultList">
-                            <ul class="item" data-bind="foreach: displayData ">
+                            <ul class="item" data-bind="foreach: sourceData ">
                                 <li class="listItem" data-bind="event: { mouseover: mouseOver, mouseout: mouseOut, click: clickItem}, css: { 'itemSelect': pdid === selectedItem() }"><span data-bind="text: category"></span>: <span data-bind="text: title"></span></li>
                             </ul>
                         </div>
@@ -82,6 +82,7 @@
         <script src="js/plugins.js"></script>
         <script src="fonts/ss-social.js"></script>
         <script src="js/vendor/knockout.js"></script>
+        <script src="js/vendor/knockout-projections.min.js"></script>
         <script src="js/menu.js"></script>
         <script src="js/main.js"></script>
         <script src="js/view.js"></script>

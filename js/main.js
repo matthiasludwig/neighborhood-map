@@ -2,6 +2,7 @@
 var map;
 var largeInfowindow;
 var startingLoc = {lat: 37.77493, lng: -122.419416}; // Lat/Lng for San Francisco, CA
+var sourceData = ko.observableArray();
 var displayData = ko.observableArray();
 var selectedItem = ko.observable();
 
