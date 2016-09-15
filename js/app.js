@@ -66,11 +66,6 @@ var ViewModel = function(){
         }
     });
 
-    // this.setMap = function(map) {
-    //      for (var i = 0; i < self.filteredData.length; i++) {
-    //          self.filteredData[i].setMap(map);
-    //      }
-    //  }
 
     this.getData = function() {
        console.log("getData() has been called");
