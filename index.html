@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Crimemap Map | View Police Reports in SF</title>
+        <title>Crimemap Map | View Police Incidents in SF, California</title>
         <meta name="description" content="TODO">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -35,22 +35,24 @@
                         </div>
                     </div>
                     <div class="menu">
-                        <p class="menuButton"><i class="fa fa-info-circle" aria-hidden="true"></i></i> About</p>
+                        <p class="menuButton"><i class="fa fa-info-circle" aria-hidden="true">&nbsp;</i>About</p>
                         <div class="collapsable">
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                         </div>
                     </div>
                     <div class="menu">
-                        <p class="menuButton"><i class="fa fa-cogs" aria-hidden="true"></i> Settings</p>
+                        <p class="menuButton"><i class="fa fa-cogs" aria-hidden="true">&nbsp;</i>Settings</p>
                         <div class="collapsable">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <select data-bind="options: policeDistricts, value: filter"></select>
+                            <br>
+                            <p data-bind="text: filter"></p>
                         </div>
                     </div>
                     <!-- Crime Data List -->
                     <div class="menu">
-                        <p class="menuButton"><i class="fa fa-list" aria-hidden="true"></i> Results</p>
+                        <p class="menuButton"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Results</p>
                         <div class="collapsable" id="resultList">
-                            <ul class="item" data-bind="foreach: crimeData ">
+                            <ul class="item" data-bind="foreach: filteredData ">
                                 <li class="listItem" data-bind="event: { mouseover: $parent.mouseOver, mouseout: $parent.mouseOut, click: $parent.clickItem}, css: { 'itemSelect': marker.pdid === selectedItem() }"><span data-bind="text: marker.address"></span>: <span data-bind="text: marker.category"></span></li>
                             </ul>
                         </div>
@@ -60,7 +62,6 @@
             <!-- Google Maps starts here -->
             <div class="Cell -10of12" id="map"></div>
         </div>
-
 
         <!-- Load custom JavaScript and Frameworks (jQuery and KO) as well as the Google Maps JS API-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

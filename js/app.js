@@ -42,10 +42,35 @@ var Marker = function(data) {
     });
 }
 
-var ViewModel = function() {
+var ViewModel = function(){
     var self = this;
 
     this.crimeData = ko.observableArray();
+    this.policeDistricts = ko.observableArray([
+        "All", "BAYVIEW", "CENTRAL", "INGLESIDE", "MISSION", "NORTHERN", "PARK", "RICHMOND", "SOUTHERN", "TARAVAL", "TENDERLOIN"
+    ]);
+    this.filter = ko.observable("All");
+    this.filteredData = this.crimeData.filter(function(x) {
+        if (self.filter() == "All") {
+            x.marker.setMap(map);
+            return x;
+        }
+        else {
+            if (x.marker.pddistrict != self.filter()) {
+                x.marker.setMap(null);
+            }
+            else if (x.marker.pddistrict === self.filter()) {
+                x.marker.setMap(map);
+                return x.marker
+            }
+        }
+    });
+
+    // this.setMap = function(map) {
+    //      for (var i = 0; i < self.filteredData.length; i++) {
+    //          self.filteredData[i].setMap(map);
+    //      }
+    //  }
 
     this.getData = function() {
        console.log("getData() has been called");
@@ -53,7 +78,7 @@ var ViewModel = function() {
            url: "https://data.sfgov.org/resource/cuks-n6tp.json",
            type: "GET",
            data: {
-               "$limit" : 100,
+               "$limit" : 1000,
                "$where" : "date between '2016-08-08T00:00:00' and '2016-08-09T00:00:00'",
                "$order" : "date DESC",
                "$$app_token" : "FOWqIJ6wgZFV3PBnSg7DKip6V"
@@ -97,23 +122,15 @@ var ViewModel = function() {
     }
 
     this.clickItem = function(listItem) {
-        highlightListItem(listItem, false);
+        highlightListItem(listItem.marker, false);
         map.setZoom(15);
         map.panTo(listItem.marker.position);
         populateInfoWindow(listItem.marker, largeInfowindow);
     }
+
     //Get the party started!
     this.getData();
 }
 
 // Knockout.js applyBindings for the View
 ko.applyBindings(new ViewModel());
-
-
-
-
-
-/*
-Notepad for code
-To be used later!
-*/
