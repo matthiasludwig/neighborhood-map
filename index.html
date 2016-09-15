@@ -50,9 +50,10 @@
                     <div class="menu">
                         <p class="menuButton"><i class="fa fa-list" aria-hidden="true"></i> Results</p>
                         <div class="collapsable" id="resultList">
-                            <!-- <ul class="item" data-bind="foreach: initialData "> -->
-                                <!-- <li class="listItem" data-bind="event: { mouseover: mouseOver, mouseout: mouseOut, click: clickItem}, css: { 'itemSelect': pdid === selectedItem() }"><span data-bind="text: category"></span>: <span data-bind="text: title"></span></li> -->
-                            <!-- </ul> -->
+                            <ul class="item" data-bind="foreach: crimeData ">
+                                <li class="listItem"><span data-bind="text: marker.address"></span></li>
+                                <!-- data-bind="event: { mouseover: mouseOver, mouseout: mouseOut, click: clickItem}, css: { 'itemSelect': pdid === selectedItem() }" -->
+                            </ul>
                         </div>
                     </div>
                 </div>
