@@ -3,6 +3,7 @@ Global Variables
 */
 var map;
 var largeInfowindow;
+var selectedItem = ko.observable();
 
 
 function init() {
@@ -21,7 +22,7 @@ var Marker = function(data) {
     // Create a marker per location, and put into markers array.
     this.marker = new google.maps.Marker({
          position: {lat: parseFloat(data.y), lng: parseFloat(data.x)},
-         title: data.category,
+         title: data.descript,
          category: data.category,
          address: data.address,
          pddistrict: data.pddistrict,
@@ -37,7 +38,7 @@ var Marker = function(data) {
     });
     this.marker.addListener('click', function() {
         populateInfoWindow(this, largeInfowindow);
-        // highlightListItem(this, true);
+        highlightListItem(this, true);
     });
 }
 
@@ -45,10 +46,6 @@ var ViewModel = function() {
     var self = this;
 
     this.crimeData = ko.observableArray();
-    this.selectedItem = function(marker) {
-        return marker;
-    };
-
 
     this.getData = function() {
        console.log("getData() has been called");
@@ -87,6 +84,7 @@ var ViewModel = function() {
            }
        });
     }
+
     this.mouseOver = function(listItem) {
         var highlighted = "active";
         listItem.marker.icon = makeMarkerIcon(highlighted);
@@ -99,7 +97,7 @@ var ViewModel = function() {
     }
 
     this.clickItem = function(listItem) {
-        // highlightListItem(listItem, false);
+        highlightListItem(listItem, false);
         map.setZoom(15);
         map.panTo(listItem.marker.position);
         populateInfoWindow(listItem.marker, largeInfowindow);
@@ -119,5 +117,3 @@ ko.applyBindings(new ViewModel());
 Notepad for code
 To be used later!
 */
-
-// , css: { 'itemSelect': pdid === selectedItem() }

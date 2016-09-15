@@ -31,11 +31,11 @@ function makeMarkerIcon(type) {
   return markerImage;
 };
 
-// function highlightListItem(marker, scrollIntoView) {
-//     ViewModel.selectedItem(marker.pdid);
-//     $('#resultList').show();
-//     if (scrollIntoView) {
-//         var loc = document.getElementsByClassName('itemSelect');
-//         loc[0].scrollIntoView(true);
-//     }
-// }
+function highlightListItem(marker, scrollIntoView) {
+    selectedItem(marker.pdid);
+    $('#resultList').show();
+    if (scrollIntoView) {
+        var loc = document.getElementsByClassName('itemSelect');
+        loc[0].scrollIntoView(true);
+    }
+}

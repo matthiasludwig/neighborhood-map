@@ -51,7 +51,7 @@
                         <p class="menuButton"><i class="fa fa-list" aria-hidden="true"></i> Results</p>
                         <div class="collapsable" id="resultList">
                             <ul class="item" data-bind="foreach: crimeData ">
-                                <li class="listItem" data-bind="event: { mouseover: $parent.mouseOver, mouseout: $parent.mouseOut, click: $parent.clickItem}"><span data-bind="text: marker.address"></span>: <span data-bind="text: marker.category"></span></li>
+                                <li class="listItem" data-bind="event: { mouseover: $parent.mouseOver, mouseout: $parent.mouseOut, click: $parent.clickItem}, css: { 'itemSelect': marker.pdid === selectedItem() }"><span data-bind="text: marker.address"></span>: <span data-bind="text: marker.category"></span></li>
                             </ul>
                         </div>
                     </div>
