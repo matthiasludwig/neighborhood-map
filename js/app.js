@@ -61,7 +61,7 @@ var ViewModel = function(){
             if (x.marker.pddistrict != self.filter()) {
                 x.marker.setMap(null);
             }
-            else if (x.marker.pddistrict === self.filter()) {
+            else {
                 x.marker.setMap(map);
                 return x.marker
             }
