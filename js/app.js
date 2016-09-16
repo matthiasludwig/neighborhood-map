@@ -65,6 +65,13 @@ var ViewModel = function(){
             }
         }
     });
+    this.numberIncidents = ko.computed(function() {
+        return ("has " + self.filteredData().length);
+    });
+    this.percentageIncidents = ko.computed(function() {
+        var temp = (self.filteredData().length) / (self.crimeData().length) * 100;
+        return "That is " + temp.toFixed(2) + "% of total incidents.";
+    });
 
 
     this.getData = function() {
