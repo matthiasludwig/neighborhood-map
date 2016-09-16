@@ -75,6 +75,7 @@ a:visited {
 #nav {
     background-color: #333;
     overflow: scroll;
+
 }
 
 #loadingData {
@@ -220,6 +221,7 @@ span {
          font-size: 10px;
          letter-spacing: 5px;
      }
+ }
 
  @media only screen and (max-width: 1000px) {
      .logo {
@@ -255,6 +257,7 @@ span {
       -webkit-transform: translate(0, 0);
       transform: translate(0, 0);
     }
+}
 
 @media print,
        (-o-min-device-pixel-ratio: 5/4),

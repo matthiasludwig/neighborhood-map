@@ -14,8 +14,10 @@ function init() {
     zoom: 13,
     mapTypeControl: false
     });
-    //Declare largeInfowindow here for later use
+    // Declare largeInfowindow here for later use
     largeInfowindow = new google.maps.InfoWindow();
+    // Knockout applyBindings here to make sure Google Maps API is loaded when invoked
+    ko.applyBindings(new ViewModel());
 }
 
 var Marker = function(data) {
@@ -66,7 +68,7 @@ var ViewModel = function(){
         }
     });
     this.numberIncidents = ko.computed(function() {
-        return ("has " + self.filteredData().length);
+        return ("has " + self.filteredData().length + " incidents.");
     });
     this.percentageIncidents = ko.computed(function() {
         var temp = (self.filteredData().length) / (self.crimeData().length) * 100;
@@ -130,9 +132,6 @@ var ViewModel = function(){
         populateInfoWindow(listItem.marker, largeInfowindow);
     }
 
-    //Get the party started!
+    // Start the app
     this.getData();
 }
-
-// Knockout.js applyBindings for the View
-ko.applyBindings(new ViewModel());
