@@ -152,8 +152,14 @@ a:visited {
      position: relative;
 }
 
+.logospace {
+    background: #2a2a2a;
+}
+
 .logo {
-    display: none;
+    width: 250px;
+    display: flex;
+    margin: auto;
 }
 
 #logos {
@@ -223,20 +229,15 @@ span {
      }
  }
 
- @media only screen and (max-width: 1000px) {
-     .logo {
-         display: flex;
-         margin: auto;
-     }
-     .title {
-         display: none;
-     }
+ @media only screen and (max-width: 1400px) {
+    .logo {
+        width: 150px;
+    }
  }
 
 
 
 @media only screen and (max-width: 768px) {
-
     #nav {
         width: 50px;
     }
@@ -256,6 +257,7 @@ span {
     .open {
       -webkit-transform: translate(0, 0);
       transform: translate(0, 0);
+      width: 100vw;
     }
 }
 
