@@ -78,6 +78,10 @@ a:visited {
 
 }
 
+.loadingCursor {
+    cursor: progress;
+}
+
 #loadingData {
     color: white;
     text-align: center;
