@@ -117,8 +117,17 @@ var ViewModel = function(){
         console.log("newData() was clicked");
         console.log("fromDate is " + fromDate()[2] + fromDate()[0] + fromDate()[1]);
         console.log("toDate is " + toDate()[2] + toDate()[0] + toDate()[1]);
-        self.crimeData([]);
+        self.clearData(self.crimeData);
         self.getData(fromDate, toDate, apiLimit);
+    }
+
+    this.clearData = function(data) {
+        console.log("BEFORE filteredData length is " + self.filteredData().length);
+        self.filteredData().forEach(function(data){
+            data.marker.setMap(null);
+        });
+        data([]);
+        console.log("AFTER filteredData length is " + self.filteredData().length);
     }
 
     this.mouseOver = function(listItem) {
