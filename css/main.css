@@ -221,9 +221,15 @@ a:visited {
     text-decoration: underline;
 }
 
-select {
+select, input {
     background-color: black;
     color: white;
+}
+
+button {
+    border-radius: 0px;
+    background-color: white;
+    color: black;
 }
 
 span {

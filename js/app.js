@@ -7,7 +7,7 @@ var selectedItem = ko.observable();
 var loadingState = ko.observable(false);
 var fromDate = ko.observableArray(["08", "08", "2016"]);
 var toDate = ko.observableArray(["08", "09", "2016"]);
-var apiLimit = 10;
+var apiLimit = 1000;
 var apiLoadingTime;
 
 function init() {
@@ -80,6 +80,7 @@ var ViewModel = function(){
 
 
     this.getData = function(fromDate, toDate, limit) {
+        // console.log("getData was called with following parameters: FROM " + fromDate()[2] + fromDate()[0] + fromDate()[1] + " TO "  + toDate()[2] + toDate()[0] + toDate()[1] "AND LIMIT " + limit );
        $.ajax({
            url: "https://data.sfgov.org/resource/cuks-n6tp.json",
            type: "GET",
@@ -97,7 +98,6 @@ var ViewModel = function(){
                    console.log("It takes unusally long to get data from the API."); }, 7000);
            },
            success: function(data){
-               self.crimeData([]);
                data.forEach(function(data){
                    self.crimeData.push(new Marker(data));
                });
@@ -112,6 +112,13 @@ var ViewModel = function(){
                console.log("SF Open Data API could not be loaded");
            }
        });
+    }
+    this.newData = function() {
+        console.log("newData() was clicked");
+        console.log("fromDate is " + fromDate()[2] + fromDate()[0] + fromDate()[1]);
+        console.log("toDate is " + toDate()[2] + toDate()[0] + toDate()[1]);
+        self.crimeData([]);
+        self.getData(fromDate, toDate, apiLimit);
     }
 
     this.mouseOver = function(listItem) {

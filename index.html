@@ -51,11 +51,18 @@
                                 <br>
                                 <p><span data-bind="text: filter"></span>&nbsp;<span data-bind="text: numberIncidents"></span>&nbsp;<span data-bind="text: percentageIncidents"></span></p>
                                 <hr>
-                                <p class="subheading">Search data by day:</p>
-                                <form>
-                                    <span>Day: </span><input type="number" name="quantity" min="1" max="31"><br>
-                                    <span>Month: </span><input type="number" name="quantity" min="1" max="12"><br>
-                                    <span>Year: </span><input type="number" name="quantity" min="2003" max="2016"><br>
+                                <p class="subHeading">Search data by day:</p>
+                                <form data-bind="submit: newData">
+                                    <p>From: </p>
+                                    <span>Day: </span><input type="number" name="quantity" min="1" max="31" data-bind="value: fromDate()[1]"><br>
+                                    <span>Month: </span><input type="number" name="quantity" min="1" max="12" data-bind="value: fromDate()[0]"><br>
+                                    <span>Year: </span><input type="number" name="quantity" min="2003" max="2016" data-bind="value: fromDate()[2]"><br>
+                                    <p>To: </p>
+                                    <span>Day: </span><input type="number" name="quantity" min="1" max="31" data-bind="value: toDate()[1]"><br>
+                                    <span>Month: </span><input type="number" name="quantity" min="1" max="12" data-bind="value: toDate()[0]"><br>
+                                    <span>Year: </span><input type="number" name="quantity" min="2003" max="2016" data-bind="value: toDate()[2]"><br>
+                                    <br>
+                                    <button type="submit">Submit</button>
                                 </form>
                                 <br>
                             </div>
