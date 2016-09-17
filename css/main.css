@@ -79,7 +79,6 @@ a:visited {
 }
 
 #loadingData {
-    display: none;
     color: white;
     text-align: center;
     margin-top: 20px;

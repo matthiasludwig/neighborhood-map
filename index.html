@@ -27,36 +27,38 @@
                         <img class="logo" src="icons/logo.png" alt="Crimemap logo">
                     </div>
                     <!-- <p class="title">Crimemap<br> San Francisco</p> -->
-                    <div id="loadingData"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span></div> <!-- Loading Animation -->
-                    <div class="menu">
-                        <div id="logos">
-                            <a href="https://www.facebook.com/matthiasludw" target="_blank" id="facebook"><i class="ss-icon">facebook</i></a>
-                            &nbsp;<a href="https://www.twitter.com/matthiasludw" target="_blank" id="twitter"><i class="ss-icon">twitter</i></a>
-                            &nbsp;<a href="https://www.linkedin.com/in/ludwigmatthias" target="_blank" id="linkedin"><i class="ss-icon">linkedin</i></a>
-                            &nbsp;<a href="https://github.com/matthiasludwig" target="_blank" id="github"><i class="ss-icon">github</i></a>
+                    <div id="loadingData" data-bind="visible: loadingState"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span></div> <!-- Loading Animation -->
+                    <div data-bind="visible: !loadingState()">
+                        <div class="menu">
+                            <div id="logos">
+                                <a href="https://www.facebook.com/matthiasludw" target="_blank" id="facebook"><i class="ss-icon">facebook</i></a>
+                                &nbsp;<a href="https://www.twitter.com/matthiasludw" target="_blank" id="twitter"><i class="ss-icon">twitter</i></a>
+                                &nbsp;<a href="https://www.linkedin.com/in/ludwigmatthias" target="_blank" id="linkedin"><i class="ss-icon">linkedin</i></a>
+                                &nbsp;<a href="https://github.com/matthiasludwig" target="_blank" id="github"><i class="ss-icon">github</i></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="menu">
-                        <p class="menuButton"><i class="fa fa-info-circle" aria-hidden="true">&nbsp;</i>About</p>
-                        <div class="collapsable">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <div class="menu">
+                            <p class="menuButton"><i class="fa fa-info-circle" aria-hidden="true">&nbsp;</i>About</p>
+                            <div class="collapsable">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="menu">
-                        <p class="menuButton"><i class="fa fa-cogs" aria-hidden="true">&nbsp;</i>Settings</p>
-                        <div class="collapsable">
-                            <select data-bind="options: policeDistricts, value: filter"></select>
-                            <br>
-                            <p><span data-bind="text: filter"></span>&nbsp;<span data-bind="text: numberIncidents"></span>&nbsp;<span data-bind="text: percentageIncidents"></span></p>
+                        <div class="menu">
+                            <p class="menuButton"><i class="fa fa-cogs" aria-hidden="true">&nbsp;</i>Settings</p>
+                            <div class="collapsable">
+                                <select data-bind="options: policeDistricts, value: filter"></select>
+                                <br>
+                                <p><span data-bind="text: filter"></span>&nbsp;<span data-bind="text: numberIncidents"></span>&nbsp;<span data-bind="text: percentageIncidents"></span></p>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Crime Data List -->
-                    <div class="menu">
-                        <p class="menuButton"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Results</p>
-                        <div class="collapsable" id="resultList">
-                            <ul class="item" data-bind="foreach: filteredData ">
-                                <li class="listItem" data-bind="event: { mouseover: $parent.mouseOver, mouseout: $parent.mouseOut, click: $parent.clickItem}, css: { 'itemSelect': marker.pdid === selectedItem() }"><span data-bind="text: marker.address"></span>: <span data-bind="text: marker.category"></span></li>
-                            </ul>
+                        <!-- Crime Data List -->
+                        <div class="menu">
+                            <p class="menuButton"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Results</p>
+                            <div class="collapsable" id="resultList">
+                                <ul class="item" data-bind="foreach: filteredData ">
+                                    <li class="listItem" data-bind="event: { mouseover: $parent.mouseOver, mouseout: $parent.mouseOut, click: $parent.clickItem}, css: { 'itemSelect': marker.pdid === selectedItem() }"><span data-bind="text: marker.address"></span>: <span data-bind="text: marker.category"></span></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>

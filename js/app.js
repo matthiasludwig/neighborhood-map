@@ -4,10 +4,10 @@ Global Variables
 var map;
 var largeInfowindow;
 var selectedItem = ko.observable();
+var loadingState = ko.observable(false);
 
 
 function init() {
-    console.log("init() has been called");
     // Get a Map
     map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 37.77493, lng: -122.419416}, // Lat/Lng for San Francisco, CA
@@ -77,7 +77,6 @@ var ViewModel = function(){
 
 
     this.getData = function() {
-       console.log("getData() has been called");
        $.ajax({
            url: "https://data.sfgov.org/resource/cuks-n6tp.json",
            type: "GET",
@@ -89,23 +88,17 @@ var ViewModel = function(){
            },
            // Loading animation
            beforeSend: function(){
-               $('.menu').toggle();
-               $('#loadingData').show();
-               $('body').css("cursor", "progress");
+               loadingState(true);
            },
            success: function(data){
                // TODO: DELETE. Just for debugging
-               console.log("Retrieved " + data.length + " records from the dataset!");
-               console.log(data);
                data.forEach(function(data){
                    self.crimeData.push(new Marker(data));
                });
            },
            // Hiding the loading animation
            complete: function(data){
-               $('#loadingData').hide();
-               $('.menu').toggle();
-               $('body').css("cursor", "default");
+               loadingState(false);
            },
            error: function(){
                // TODO Implement Error Handling for failing of ajax Request
