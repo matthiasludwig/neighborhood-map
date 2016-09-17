@@ -91,7 +91,7 @@ a:visited {
 .menu {
     color: white;
     text-align: center;
-    border-bottom: 1px solid white;
+    border-bottom: 5px solid white;
 }
 
 .menu > ul {
@@ -221,15 +221,34 @@ a:visited {
     text-decoration: underline;
 }
 
+.optionHeading {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.innerContent {
+    padding-left: 25px;
+    padding-right: 15px;
+    text-align: left;
+}
+
+.tipContent {
+    font-size: 0.75em;
+}
+
 select, input {
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
+}
+
+input {
+    width: 50px;
 }
 
 button {
     border-radius: 0px;
-    background-color: white;
-    color: black;
+    background-color: black;
+    color: white;
 }
 
 span {

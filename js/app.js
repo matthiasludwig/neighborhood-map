@@ -7,7 +7,7 @@ var selectedItem = ko.observable();
 var loadingState = ko.observable(false);
 var fromDate = ko.observableArray(["08", "08", "2016"]);
 var toDate = ko.observableArray(["08", "09", "2016"]);
-var apiLimit = 1000;
+var apiLimit = 500;
 var apiLoadingTime;
 
 function init() {
@@ -80,13 +80,11 @@ var ViewModel = function(){
 
 
     this.getData = function(fromDate, toDate, limit) {
-        // console.log("getData was called with following parameters: FROM " + fromDate()[2] + fromDate()[0] + fromDate()[1] + " TO "  + toDate()[2] + toDate()[0] + toDate()[1] "AND LIMIT " + limit );
        $.ajax({
            url: "https://data.sfgov.org/resource/cuks-n6tp.json",
            type: "GET",
            data: {
                "$limit" : limit,
-            //    "$where" : "date between '" + fromDate()[0] + '-' + fromDate()[1] "-" + fromDate()[3] + "T00:00:00' and '2016-08-09T00:00:00'",
                "$where" : "date between '"+ fromDate()[2] +"-" + fromDate()[0] + "-"+ fromDate()[1] +"T00:00:00' and '" + toDate()[2] + "-" + toDate()[0] + "-" + toDate()[1] + "T00:00:00'",
                "$order" : "date DESC",
                "$$app_token" : "FOWqIJ6wgZFV3PBnSg7DKip6V"
@@ -114,20 +112,15 @@ var ViewModel = function(){
        });
     }
     this.newData = function() {
-        console.log("newData() was clicked");
-        console.log("fromDate is " + fromDate()[2] + fromDate()[0] + fromDate()[1]);
-        console.log("toDate is " + toDate()[2] + toDate()[0] + toDate()[1]);
         self.clearData(self.crimeData);
         self.getData(fromDate, toDate, apiLimit);
     }
 
     this.clearData = function(data) {
-        console.log("BEFORE filteredData length is " + self.filteredData().length);
         self.filteredData().forEach(function(data){
             data.marker.setMap(null);
         });
         data([]);
-        console.log("AFTER filteredData length is " + self.filteredData().length);
     }
 
     this.mouseOver = function(listItem) {
