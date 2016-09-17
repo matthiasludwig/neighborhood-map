@@ -39,3 +39,7 @@ function highlightListItem(marker, scrollIntoView) {
         loc[0].scrollIntoView(true);
     }
 }
+
+function googleError() {
+    alert("The Google Maps API could not be loaded. Please try again later!");
+}

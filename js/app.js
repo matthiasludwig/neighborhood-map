@@ -5,7 +5,10 @@ var map;
 var largeInfowindow;
 var selectedItem = ko.observable();
 var loadingState = ko.observable(false);
-
+var fromDate = ko.observableArray(["08", "08", "2016"]);
+var toDate = ko.observableArray(["08", "09", "2016"]);
+var apiLimit = 10;
+var apiLoadingTime;
 
 function init() {
     // Get a Map
@@ -76,22 +79,25 @@ var ViewModel = function(){
     });
 
 
-    this.getData = function() {
+    this.getData = function(fromDate, toDate, limit) {
        $.ajax({
            url: "https://data.sfgov.org/resource/cuks-n6tp.json",
            type: "GET",
            data: {
-               "$limit" : 1000,
-               "$where" : "date between '2016-08-08T00:00:00' and '2016-08-09T00:00:00'",
+               "$limit" : limit,
+            //    "$where" : "date between '" + fromDate()[0] + '-' + fromDate()[1] "-" + fromDate()[3] + "T00:00:00' and '2016-08-09T00:00:00'",
+               "$where" : "date between '"+ fromDate()[2] +"-" + fromDate()[0] + "-"+ fromDate()[1] +"T00:00:00' and '" + toDate()[2] + "-" + toDate()[0] + "-" + toDate()[1] + "T00:00:00'",
                "$order" : "date DESC",
                "$$app_token" : "FOWqIJ6wgZFV3PBnSg7DKip6V"
            },
            // Loading animation
            beforeSend: function(){
                loadingState(true);
+               apiLoadingTime = setTimeout(function(){
+                   console.log("It takes unusally long to get data from the API."); }, 7000);
            },
            success: function(data){
-               // TODO: DELETE. Just for debugging
+               self.crimeData([]);
                data.forEach(function(data){
                    self.crimeData.push(new Marker(data));
                });
@@ -99,10 +105,11 @@ var ViewModel = function(){
            // Hiding the loading animation
            complete: function(data){
                loadingState(false);
+               clearTimeout(apiLoadingTime);
            },
            error: function(){
-               // TODO Implement Error Handling for failing of ajax Request
-               console.log("API could not be loaded");
+               alert("SF Open Data API is can not be reached. Please try again later!")
+               console.log("SF Open Data API could not be loaded");
            }
        });
     }
@@ -126,5 +133,5 @@ var ViewModel = function(){
     }
 
     // Start the app
-    this.getData();
+    this.getData(fromDate, toDate, apiLimit);
 }

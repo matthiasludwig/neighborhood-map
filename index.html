@@ -46,9 +46,18 @@
                         <div class="menu">
                             <p class="menuButton"><i class="fa fa-cogs" aria-hidden="true">&nbsp;</i>Settings</p>
                             <div class="collapsable">
+                                <p class="subHeading">Filter by Police District:</p>
                                 <select data-bind="options: policeDistricts, value: filter"></select>
                                 <br>
                                 <p><span data-bind="text: filter"></span>&nbsp;<span data-bind="text: numberIncidents"></span>&nbsp;<span data-bind="text: percentageIncidents"></span></p>
+                                <hr>
+                                <p class="subheading">Search data by day:</p>
+                                <form>
+                                    <span>Day: </span><input type="number" name="quantity" min="1" max="31"><br>
+                                    <span>Month: </span><input type="number" name="quantity" min="1" max="12"><br>
+                                    <span>Year: </span><input type="number" name="quantity" min="2003" max="2016"><br>
+                                </form>
+                                <br>
                             </div>
                         </div>
                         <!-- Crime Data List -->

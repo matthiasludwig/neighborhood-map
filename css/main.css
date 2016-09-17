@@ -217,6 +217,15 @@ a:visited {
     text-align: center;
 }
 
+.subHeading {
+    text-decoration: underline;
+}
+
+select {
+    background-color: black;
+    color: white;
+}
+
 span {
     font-weight: bold;
 }
