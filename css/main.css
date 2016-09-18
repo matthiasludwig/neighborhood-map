@@ -246,10 +246,6 @@ select, input {
     color: black;
 }
 
-input {
-    width: 50px;
-}
-
 button {
     border-radius: 0px;
     background-color: black;

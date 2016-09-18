@@ -54,16 +54,11 @@
                                     <p class="subHeading"><i class="fa fa-calendar-o" aria-hidden="true"></i> - Adjust date</p>
                                     <form data-bind="submit: newData">
                                         <p class="optionHeading">From: </p>
-                                        <input type="number" pattern="[0-9]" name="date" min="1" max="31" data-bind="value: fromDate()[0]">
-                                        <input type="number" pattern="[0-9]" name="date" min="1" max="12" data-bind="value: fromDate()[1]">
-                                        <input type="number" pattern="[0-9]" name="date" min="2003" max="2016" data-bind="value: fromDate()[2]"><br>
+                                        <input type="date" pattern="\d*" name="date" data-bind="value: fromDate">
                                         <p class="optionHeading">To: </p>
-                                        <input type="number" pattern="[0-9]" name="date" min="1" max="31" data-bind="value: toDate()[0]">
-                                        <input type="number" pattern="[0-9]" name="date" min="1" max="12" data-bind="value: toDate()[1]">
-                                        <input type="number" pattern="[0-9]" name="date" min="2003" max="2016" data-bind="value: toDate()[2]"><br>
-                                        <p class="tipContent">Month/Day/Year. For example: 12/01/2015</p>
+                                        <input type="date" pattern="\d*" name="date" data-bind="value: toDate">
                                         <hr class="subDivider">
-                                        <span>Limit: </span><input type="number" pattern="\d*"/ name="quantity" min="0" max="3500" step="100" data-bind="value: apiLimit"><br>
+                                        <span>Limit: </span><input type="number" pattern="\d*" name="quantity" min="0" max="3500" step="100" data-bind="value: apiLimit"><br>
                                         <p class="tipContent">A high limit might slow down the browser.<br>3500 is the current limit of incidents per request.</p>
                                         <br>
                                         <button type="submit">Update</button>
@@ -96,6 +91,7 @@
         <script src="fonts/ss-social.js"></script>
         <script src="js/vendor/knockout.js"></script>
         <script src="js/vendor/knockout-projections.min.js"></script>
+        <script src="js/vendor/moment.min.js"></script>
         <script src="js/app.js"></script>
         <script src="js/view.js"></script>
         <script src="js/helper.js"></script>

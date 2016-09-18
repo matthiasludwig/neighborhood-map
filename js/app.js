@@ -5,8 +5,8 @@ var map;
 var largeInfowindow;
 var selectedItem = ko.observable();
 var loadingState = ko.observable(false);
-var fromDate = ko.observableArray(["08", "08", "2016"]);
-var toDate = ko.observableArray(["08", "09", "2016"]);
+var fromDate = ko.observable(moment(new Date(2016,01,01)).format('YYYY[-]MM[-]DD'));
+var toDate = ko.observable(moment(new Date(2016,01,02)).format('YYYY[-]MM[-]DD'));
 var apiLimit = 500;
 var apiLoadingTime;
 
@@ -36,7 +36,7 @@ var Marker = function(data) {
          dayofweek: data.dayofweek,
          time: formatTime(data.time),
          map: map,
-         date: formatDate(data.date),
+         date: moment(data.date).format("MMMM Do YYYY"),
          icon: makeMarkerIcon(data.resolution),
          animation: google.maps.Animation.DROP,
          id: data.i
@@ -85,7 +85,7 @@ var ViewModel = function(){
            type: "GET",
            data: {
                "$limit" : limit,
-               "$where" : "date between '"+ fromDate()[2] +"-" + fromDate()[0] + "-"+ fromDate()[1] +"T00:00:00' and '" + toDate()[2] + "-" + toDate()[0] + "-" + toDate()[1] + "T00:00:00'",
+               "$where" : "date between '"+ fromDate() +"T00:00:00' and '" + toDate() + "T00:00:00'",
                "$order" : "date DESC",
                "$$app_token" : "FOWqIJ6wgZFV3PBnSg7DKip6V"
            },
@@ -96,6 +96,7 @@ var ViewModel = function(){
                    console.log("It takes unusally long to get data from the API."); }, 7000);
            },
            success: function(data){
+               console.log(data);
                data.forEach(function(data){
                    self.crimeData.push(new Marker(data));
                });
@@ -112,6 +113,8 @@ var ViewModel = function(){
        });
     }
     this.newData = function() {
+        console.log("FROM is " + fromDate());
+        console.log("TO is " + toDate());
         self.clearData(self.crimeData);
         self.getData(fromDate, toDate, apiLimit);
     }

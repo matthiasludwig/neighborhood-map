@@ -8,7 +8,7 @@ function populateInfoWindow(marker, InfoWindow) {
       InfoWindow.marker = marker;
       InfoWindow.setContent(
         '<p class="markerTitle">' + marker.category + '</p><p style="text-align:center;">' + marker.title + '</p>' +
-        '<p><span>When: </span>'+ marker.dayofweek + ', ' + marker.date + ' at ' + marker.time + '</p>' +
+        '<p><span>When: </span>'+ marker.dayofweek + ', ' + marker.date + ' at ' + marker.time +'</p>' +
         '<p><span>Address: </span>' + marker.address + '</p>' +
         '<p><span>Police District: </span>' + marker.pddistrict + '</p>' +
         '<p><span>Resolution: </span>' + marker.resolution + '</p>'
