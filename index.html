@@ -46,22 +46,23 @@
                             <p class="menuButton"><i class="fa fa-cogs" aria-hidden="true">&nbsp;</i>Settings</p>
                             <div class="collapsable">
                                 <div class="innerContent">
-                                    <p class="subHeading">Filter by Police District:</p>
+                                    <p class="subHeading"><i class="fa fa-filter" aria-hidden="true"></i> - Filter by police district</p>
                                     <select data-bind="options: policeDistricts, value: filter"></select>
                                     <br>
                                     <p><span data-bind="text: filter"></span>&nbsp;<span data-bind="text: numberIncidents"></span><br><span data-bind="text: percentageIncidents"></span></p>
                                     <hr>
-                                    <p class="subHeading">Search data by day:</p>
+                                    <p class="subHeading"><i class="fa fa-calendar-o" aria-hidden="true"></i> - Adjust date</p>
                                     <form data-bind="submit: newData">
                                         <p class="optionHeading">From: </p>
-                                        <span>Day: </span><input type="number" name="quantity" min="1" max="31" data-bind="value: fromDate()[1]"><br>
-                                        <span>Month: </span><input type="number" name="quantity" min="1" max="12" data-bind="value: fromDate()[0]"><br>
-                                        <span>Year: </span><input type="number" name="quantity" min="2003" max="2016" data-bind="value: fromDate()[2]"><br>
+                                        <input type="number" name="date" min="1" max="31" data-bind="value: fromDate()[0]">
+                                        <input type="number" name="date" min="1" max="12" data-bind="value: fromDate()[1]">
+                                        <input type="number" name="date" min="2003" max="2016" data-bind="value: fromDate()[2]"><br>
                                         <p class="optionHeading">To: </p>
-                                        <span>Day: </span><input type="number" name="quantity" min="1" max="31" data-bind="value: toDate()[1]"><br>
-                                        <span>Month: </span><input type="number" name="quantity" min="1" max="12" data-bind="value: toDate()[0]"><br>
-                                        <span>Year: </span><input type="number" name="quantity" min="2003" max="2016" data-bind="value: toDate()[2]"><br>
-                                        <br>
+                                        <input type="number" name="date" min="1" max="31" data-bind="value: toDate()[0]">
+                                        <input type="number" name="date" min="1" max="12" data-bind="value: toDate()[1]">
+                                        <input type="number" name="date" min="2003" max="2016" data-bind="value: toDate()[2]"><br>
+                                        <p class="tipContent">Month/Day/Year. For example: 12/01/2015</p>
+                                        <hr class="subDivider">
                                         <span>Limit: </span><input type="number" name="quantity" min="0" max="3500" data-bind="value: apiLimit"><br>
                                         <p class="tipContent">A high limit might slow down the browser.<br>3500 is the current limit of incidents per request.</p>
                                         <br>

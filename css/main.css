@@ -218,12 +218,16 @@ a:visited {
 }
 
 .subHeading {
-    text-decoration: underline;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.subDivider {
+    border-top: 1px dashed white;
 }
 
 .optionHeading {
     font-weight: bold;
-    text-decoration: underline;
 }
 
 .innerContent {
@@ -234,6 +238,7 @@ a:visited {
 
 .tipContent {
     font-size: 0.75em;
+    font-style: italic;
 }
 
 select, input {
