@@ -96,7 +96,10 @@ var ViewModel = function(){
                    console.log("It takes unusally long to get data from the API."); }, 7000);
            },
            success: function(data){
-               console.log(data);
+               if (data.length === 0) {
+                   window.alert("An Error has occured! Please check your date Settings. Be aware that the available data is trailing the current day by approx. 10 days.")
+                   return;
+               }
                data.forEach(function(data){
                    self.crimeData.push(new Marker(data));
                });
@@ -107,18 +110,28 @@ var ViewModel = function(){
                clearTimeout(apiLoadingTime);
            },
            error: function(jqXHR, textStatus, errorThrown){
+               console.log("### ERROR LOGGING ###");
                console.log("jqXHR is " + jqXHR);
                console.log("textStatus is " + textStatus);
                console.log("errorThrown is " + errorThrown);
-
-               alert("SF Open Data API is can not be reached. Please try again later!")
-               console.log("SF Open Data API could not be loaded");
+               switch (errorThrown) {
+                   case "Bad Request":
+                       window.alert("An Error has occured. Please check your values in the Settings menu!");
+                       break;
+                   case "":
+                        window.alert("The SF Open Data API is not accesible right now. Please try again later!")
+                        break;
+                   default:
+                    window.alert("An unknown Error with the SF Open Data API has occured.");
+               }
            }
        });
     }
     this.newData = function() {
-        console.log("FROM is " + fromDate());
-        console.log("TO is " + toDate());
+        if (apiLimit < 0 || apiLimit > 3500)
+        {
+            window.alert("Please choose a value between 0 and 3500 for the API Limit in the Settings view");
+        }
         self.clearData(self.crimeData);
         self.getData(fromDate, toDate, apiLimit);
     }

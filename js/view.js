@@ -41,5 +41,5 @@ function highlightListItem(marker, scrollIntoView) {
 }
 
 function googleError() {
-    alert("The Google Maps API could not be loaded. Please try again later!");
+    window.alert("The Google Maps API could not be loaded. Please try again later!");
 }
