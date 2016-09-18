@@ -25,6 +25,7 @@ The site uses the [Google Maps Javascript API](https://developers.google.com/map
 * [HTML5 Boilerplate Template](https://html5boilerplate.com/)
 * [Oliver Knoblich - Flexbox Off Canvas Menu](https://codepen.io/oknoblich/pen/klnjw)
 * [Real Favicon Generator](https://realfavicongenerator.net/)
+* [Squarespace Logo](https://logo.squarespace.com/)
 
 ## Frameworks
 
