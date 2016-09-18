@@ -5,8 +5,8 @@ var map;
 var largeInfowindow;
 var selectedItem = ko.observable();
 var loadingState = ko.observable(false);
-var fromDate = ko.observable(moment(new Date(2016,01,01)).format('YYYY[-]MM[-]DD'));
-var toDate = ko.observable(moment(new Date(2016,01,02)).format('YYYY[-]MM[-]DD'));
+var fromDate = ko.observable(moment().subtract(14, 'days').format('YYYY[-]MM[-]DD'));
+var toDate = ko.observable(moment().subtract(14, 'days').format('YYYY[-]MM[-]DD'));
 var apiLimit = 500;
 var apiLoadingTime;
 
@@ -106,7 +106,11 @@ var ViewModel = function(){
                loadingState(false);
                clearTimeout(apiLoadingTime);
            },
-           error: function(){
+           error: function(jqXHR, textStatus, errorThrown){
+               console.log("jqXHR is " + jqXHR);
+               console.log("textStatus is " + textStatus);
+               console.log("errorThrown is " + errorThrown);
+
                alert("SF Open Data API is can not be reached. Please try again later!")
                console.log("SF Open Data API could not be loaded");
            }

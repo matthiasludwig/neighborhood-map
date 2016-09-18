@@ -54,9 +54,9 @@
                                     <p class="subHeading"><i class="fa fa-calendar-o" aria-hidden="true"></i> - Adjust date</p>
                                     <form data-bind="submit: newData">
                                         <p class="optionHeading">From: </p>
-                                        <input type="date" pattern="\d*" name="date" data-bind="value: fromDate">
+                                        <input type="date" name="date" data-bind="value: fromDate">
                                         <p class="optionHeading">To: </p>
-                                        <input type="date" pattern="\d*" name="date" data-bind="value: toDate">
+                                        <input type="date" name="date" data-bind="value: toDate">
                                         <hr class="subDivider">
                                         <span>Limit: </span><input type="number" pattern="\d*" name="quantity" min="0" max="3500" step="100" data-bind="value: apiLimit"><br>
                                         <p class="tipContent">A high limit might slow down the browser.<br>3500 is the current limit of incidents per request.</p>
