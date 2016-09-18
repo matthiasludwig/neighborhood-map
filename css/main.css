@@ -266,7 +266,11 @@ span {
    ========================================================================== */
 @media only screen and (max-width: 768px) {
     #nav {
-        width: 50px;
+        width: 2em;
+    }
+
+    #map {
+        width: calc(100vw - 2em);
     }
 
     #toggle {
