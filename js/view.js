@@ -22,6 +22,20 @@ function populateInfoWindow(marker, InfoWindow) {
 }
 
 function makeMarkerIcon(type) {
+    switch (type) {
+        case "ARREST, BOOKED":
+            break;
+        case "ARREST, CITED":
+            break;
+        case "JUVENILE, BOOKED":
+            break;
+        case "ARREST, BOOKED":
+            break;
+        case "NONE":
+            break;
+        default:
+            type = "NOT AVAILABLE";
+    }
     var markerImage = {
       url: 'icons/' + type + '.png',
       size: new google.maps.Size(32, 32),
@@ -29,7 +43,7 @@ function makeMarkerIcon(type) {
       anchor: new google.maps.Point(0, 32),
     };
   return markerImage;
-};
+}
 
 function highlightListItem(marker, scrollIntoView) {
     selectedItem(marker.pdid);
