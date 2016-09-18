@@ -54,13 +54,13 @@
                                     <p class="subHeading"><i class="fa fa-calendar-o" aria-hidden="true"></i> - Adjust date</p>
                                     <form data-bind="submit: newData">
                                         <p class="optionHeading">From: </p>
-                                        <input type="number" name="date" min="1" max="31" data-bind="value: fromDate()[0]">
-                                        <input type="number" name="date" min="1" max="12" data-bind="value: fromDate()[1]">
-                                        <input type="number" name="date" min="2003" max="2016" data-bind="value: fromDate()[2]"><br>
+                                        <input type="number" pattern="[0-9]" name="date" min="1" max="31" data-bind="value: fromDate()[0]">
+                                        <input type="number" pattern="[0-9]" name="date" min="1" max="12" data-bind="value: fromDate()[1]">
+                                        <input type="number" pattern="[0-9]" name="date" min="2003" max="2016" data-bind="value: fromDate()[2]"><br>
                                         <p class="optionHeading">To: </p>
-                                        <input type="number" name="date" min="1" max="31" data-bind="value: toDate()[0]">
-                                        <input type="number" name="date" min="1" max="12" data-bind="value: toDate()[1]">
-                                        <input type="number" name="date" min="2003" max="2016" data-bind="value: toDate()[2]"><br>
+                                        <input type="number" pattern="[0-9]" name="date" min="1" max="31" data-bind="value: toDate()[0]">
+                                        <input type="number" pattern="[0-9]" name="date" min="1" max="12" data-bind="value: toDate()[1]">
+                                        <input type="number" pattern="[0-9]" name="date" min="2003" max="2016" data-bind="value: toDate()[2]"><br>
                                         <p class="tipContent">Month/Day/Year. For example: 12/01/2015</p>
                                         <hr class="subDivider">
                                         <span>Limit: </span><input type="number" name="quantity" min="0" max="3500" data-bind="value: apiLimit"><br>
