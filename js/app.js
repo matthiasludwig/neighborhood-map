@@ -1,5 +1,5 @@
 /*
-Global Variables
+Global Variables delcared
 */
 var map;
 var largeInfowindow;
@@ -47,29 +47,32 @@ var Marker = function(data) {
     });
 }
 
+// ViewModel is defined here
 var ViewModel = function(){
     var self = this;
 
-    this.crimeData = ko.observableArray();
+    this.crimeData = ko.observableArray(); // This is the array that contains ALL markers that came from the server
     this.policeDistricts = ko.observableArray([
-        "All", "BAYVIEW", "CENTRAL", "INGLESIDE", "MISSION", "NORTHERN", "PARK", "RICHMOND", "SOUTHERN", "TARAVAL", "TENDERLOIN"
+        "All", "BAYVIEW", "CENTRAL", "INGLESIDE", "MISSION", "NORTHERN", "PARK", "RICHMOND", "SOUTHERN", "TARAVAL", "TENDERLOIN" // The Police Discricts are hard coded
     ]);
-    this.filter = ko.observable("All");
+    this.filter = ko.observable("All"); // By default the filter shows all police districts with its incidents
     this.filteredData = this.crimeData.filter(function(x) {
         if (self.filter() == "All") {
-            x.marker.setMap(map);
-            return x;
+            x.marker.setMap(map); // Sets all markers on the map
+            return x; // Returns all the markers
         }
         else {
             if (x.marker.pddistrict != self.filter()) {
-                x.marker.setMap(null);
+                x.marker.setMap(null); // If the marker is from a police district that is not selected, the marker is taken from the map
             }
             else {
-                x.marker.setMap(map);
-                return x.marker
+                x.marker.setMap(map); // Only marker where the police district equals the current selection is return to the list...
+                return x.marker // ... AND put on the map
             }
         }
     });
+    /* The following two computed observable are merely giving some granular "stastic" about the number of incidents for the selected police district
+    as well as the percentage of the total incidents*/
     this.numberIncidents = ko.computed(function() {
         return ("has " + self.filteredData().length + " incidents.");
     });
@@ -96,6 +99,7 @@ var ViewModel = function(){
                    console.log("It takes unusally long to get data from the API."); }, 7000);
            },
            success: function(data){
+               // Error handling if start date is after end date AND/OR the selection does not return any data
                if (data.length === 0) {
                    window.alert("An Error has occured! Please check your date Settings. Be aware that the available data is trailing the current day by approx. 10 days.")
                    return;
@@ -110,6 +114,7 @@ var ViewModel = function(){
                clearTimeout(apiLoadingTime);
            },
            error: function(jqXHR, textStatus, errorThrown){
+               //Error logging to the console and depending on the thrown error a different alert is shown to the user
                console.log("### ERROR LOGGING ###");
                console.log("jqXHR is " + jqXHR);
                console.log("textStatus is " + textStatus);
@@ -127,7 +132,9 @@ var ViewModel = function(){
            }
        });
     }
+    // this function is called when the "Update" button under settings is pressed
     this.newData = function() {
+        // This is a fallback of sorts, since mobile Safari is not respecting the min/max attribute of the html input field
         if (apiLimit < 0 || apiLimit > 3500)
         {
             window.alert("Please choose a value between 0 and 3500 for the API Limit in the Settings view");
@@ -135,27 +142,27 @@ var ViewModel = function(){
         self.clearData(self.crimeData);
         self.getData(fromDate, toDate, apiLimit);
     }
-
+    // If the time frame is updated in the settings view, the former array is emptied and all markers are taken off the map
     this.clearData = function(data) {
         self.filteredData().forEach(function(data){
             data.marker.setMap(null);
         });
         data([]);
     }
-
+    // Animates a marker when the mouse cursor hovers of the list item
     this.mouseOver = function(listItem) {
         var highlighted = "active";
         listItem.marker.icon = makeMarkerIcon(highlighted);
         listItem.marker.setMap(map);
     }
-
+    // If the mouse cursor leaves the list item the marker is set to its default icon
     this.mouseOut = function(listItem) {
         listItem.marker.icon = makeMarkerIcon(listItem.marker.resolution);
         listItem.marker.setMap(map);
     }
-
+    // When a marker is clicked the list item is highlighted and zommed to on the map
     this.clickItem = function(listItem) {
-        highlightListItem(listItem.marker, false);
+        highlightListItem(listItem.marker, false); // false means it does not scroll the selected list item into view
         map.setZoom(15);
         map.panTo(listItem.marker.position);
         populateInfoWindow(listItem.marker, largeInfowindow);

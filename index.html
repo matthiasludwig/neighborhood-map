@@ -13,13 +13,14 @@
         <link rel="manifest" href="manifest.json">
         <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
         <meta name="theme-color" content="#000000">
-
+        <!-- Linking the flexbox framework (grd), fa, the social icons and the main css files -->
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/grd.css">
         <link rel="stylesheet" href="css/font-awesome.min.css">
         <link rel="stylesheet" href="fonts/ss-social-circle.css">
         <link rel="stylesheet" href="css/main.css">
     </head>
+    <!-- If the loadingState is true during the AJAX call the cursor on the body shows a progress wheel -->
     <body data-bind="css: { loadingCursor: loadingState}">
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -28,10 +29,12 @@
             <div class="Cell -2of12" id="nav">
                 <!-- Hamburger Menu (not visible until Breakpoint is hit) -->
                 <div id="toggle"><i class="fa fa-bars fa-2x"></i></div>
+                <!-- Sidebar begins here -->
                 <div class="sidebar">
                     <div class="logospace">
                         <img class="logo" src="icons/logo.png" alt="Crimemap logo">
                     </div>
+                    <!-- During the AJAX call the menu is not visible and a loading gear is displayed -->
                     <div id="loadingData" data-bind="visible: loadingState"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span></div> <!-- Loading Animation -->
                     <div data-bind="visible: !loadingState()">
                         <div class="menu">
@@ -45,9 +48,31 @@
                         <div class="menu">
                             <p class="menuButton"><i class="fa fa-info-circle" aria-hidden="true">&nbsp;</i>About</p>
                             <div class="collapsable">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <div class="innerContent">
+                                    <p>Crimemap SF shows you recorded crime incidents in San Francisco, CA between 2003 until now.</p>
+                                    <p class="tipContent">(The data is trailing normally 10-15 days behind the current date)</p>
+                                    <hr>
+                                    <p class="subHeading">Usage</p>
+                                    <p>You can view the location of recorded crime incidents on the map. Click a marker on the map to see the corresponding list item in the results view.</p>
+                                    <p>Under <span>"Results"</span> you can see a list of all crime incidents for a given time frame. Hover with the mouse cursor over a list item to see the corresponding location on the map.</p>
+                                    <p>Under <span>"Settings"</span> you can adjust the timeframe and the limit of crime incidents that will be requested from the API</p>
+                                    <p>The marker icons on the map correspond with the resolution of each crime incident:</p>
+                                    <ul class="descriptionList">
+                                        <li><img src="icons/ARREST, BOOKED.png" alt="Arrested and booked icon">&nbsp;<span class="tipContent">Suspect was arrested &amp; booked</span></li>
+                                        <li><img src="icons/ARREST, CITED.png" alt="Arrested and cited icon">&nbsp;<span class="tipContent">Suspect was arrested &amp; cited</span></li>
+                                        <li><img src="icons/JUVENILE BOOKED.png" alt="Juvenile arrested and booked icon">&nbsp;<span class="tipContent">A juvenile was arrested &amp; booked</span></li>
+                                        <li><img src="icons/UNFOUNDED.png" alt="Unfounded icon">&nbsp;<span class="tipContent">The incident was unfounded</span></li>
+                                        <li><img src="icons/NONE.png" alt="No resolution icon">&nbsp;<span class="tipContent">There is no resolution</span></li>
+                                        <li><img src="icons/NOT AVAILABLE.png" alt="Other resolution icon">&nbsp;<span class="tipContent">Other resolution/incident</span></li>
+                                    </ul>
+                                    <hr>
+                                    <p class="subHeading">Credit</p>
+                                    <p>The site uses the <a href="https://developers.google.com/maps/documentation/javascript/" target="_blank">Google Maps Javascript API</a> and requests the crime incidents from the <a href="https://dev.socrata.com/foundry/data.sfgov.org/cuks-n6tp" target="_blank">SF Open Data API</a></p>
+                                    <p class="tipContent">For a full list of used technologies, please visit <a href="https://github.com/matthiasludwig/neighborhood-map" target="_blank">the GitHub Repository for this page.</a></p>
+                                </div>
                             </div>
                         </div>
+                        <!-- Settings Menu -->
                         <div class="menu">
                             <p class="menuButton"><i class="fa fa-cogs" aria-hidden="true">&nbsp;</i>Settings</p>
                             <div class="collapsable">
@@ -88,11 +113,9 @@
             <!-- Google Maps starts here -->
             <div class="Cell -10of12" id="map"></div>
         </div>
-
         <!-- Load custom JavaScript and Frameworks (jQuery and KO) as well as the Google Maps JS API-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-
         <script src="js/plugins.js"></script>
         <script src="fonts/ss-social.js"></script>
         <script src="js/vendor/knockout.js"></script>
@@ -102,7 +125,6 @@
         <script src="js/view.js"></script>
         <script src="js/helper.js"></script>
         <script src="js/menu.js"></script>
-
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgKZclTlBcjeCW3cS8uMzbVOB6f6Act3A&libraries=geometry&callback=init" onerror="googleError()" async defer></script>
     </body>
 </html>

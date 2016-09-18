@@ -22,6 +22,7 @@ function populateInfoWindow(marker, InfoWindow) {
 }
 
 function makeMarkerIcon(type) {
+    // Checks if the icon is available and falls back to an icon if it is not available
     switch (type) {
         case "ARREST, BOOKED":
             break;
@@ -34,6 +35,7 @@ function makeMarkerIcon(type) {
         case "NONE":
             break;
         default:
+        // This is due to the fact that the API has not a complete list of possible resolutions
             type = "NOT AVAILABLE";
     }
     var markerImage = {
@@ -53,7 +55,7 @@ function highlightListItem(marker, scrollIntoView) {
         loc[0].scrollIntoView(true);
     }
 }
-
+// Error handling in case the Goolge Maps api can not be reached
 function googleError() {
     window.alert("The Google Maps API could not be loaded. Please try again later!");
 }
