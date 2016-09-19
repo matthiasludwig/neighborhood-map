@@ -2,19 +2,24 @@
 
 
 The Neighborhood Map lets you view details for crime incidents in San Francisco, CA from January 2013 to today.
-You can view the Map at [https://www.crimemap.org](https://www.crimemap.org) or downloading the repository and opening index.html
+
+
+### How to run
+
+
+You can view the Map at [https://www.crimemap.org](https://www.crimemap.org) or you can download or for this repository and run index.html with your browser.
 
 
 In **Settings** the selected time and API Limit can be adjusted
 In the **Results** view all incidents are shown in a list format.
 
 
-* ![Arrested and booked icon](icons/ARREST, BOOKED.png) Suspect was arrested &amp; booked
-* ![Arrested and cited icon](icons/ARREST, CITED.png) Suspect was arrested &amp; cited
-* ![Juvenile arrested and booked icon](icons/JUVENILE BOOKED.png) A juvenile was arrested &amp; booked
+* ![Arrested and booked icon](icons/ARREST,%20BOOKED.png) Suspect was arrested &amp; booked
+* ![Arrested and cited icon](icons/ARREST,%20CITED.png) Suspect was arrested &amp; cited
+* ![Juvenile arrested and booked icon](icons/JUVENILE%20BOOKED.png) A juvenile was arrested &amp; booked
 * ![Unfounded icon](icons/UNFOUNDED.png) The incident was unfounded
 * ![No resolution icon](icons/NONE.png) There is no resolution
-* ![Other resolution icon](icons/NOT AVAILABLE.png) Other resolution/incident
+* ![Other resolution icon](icons/NOT%20AVAILABLE.png) Other resolution/incident
 
 
 The site uses the [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/) and requests the crime incidents from the [SF Open Data API](https://dev.socrata.com/foundry/data.sfgov.org/cuks-n6tp)
