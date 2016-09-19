@@ -26,6 +26,7 @@ The site uses the [Google Maps Javascript API](https://developers.google.com/map
 * [Oliver Knoblich - Flexbox Off Canvas Menu](https://codepen.io/oknoblich/pen/klnjw)
 * [Real Favicon Generator](https://realfavicongenerator.net/)
 * [Squarespace Logo](https://logo.squarespace.com/)
+* [Freepik Justice Logo Set](http://www.flaticon.com/packs/justice)
 
 ## Frameworks
 
