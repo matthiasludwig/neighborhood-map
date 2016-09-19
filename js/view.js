@@ -34,6 +34,8 @@ function makeMarkerIcon(type) {
             break;
         case "NONE":
             break;
+        case "active":
+            break;
         default:
         // This is due to the fact that the API has not a complete list of possible resolutions
             type = "NOT AVAILABLE";
