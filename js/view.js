@@ -53,6 +53,7 @@ function makeMarkerIcon(type) {
 function highlightListItem(marker, scrollIntoView) {
     selectedItem(marker.pdid);
     $('#resultList').show();
+    $('.sidebar').toggleClass('open');
     marker.setAnimation(google.maps.Animation.BOUNCE);
     setTimeout(function(){
         marker.setAnimation(null);}, 2300);

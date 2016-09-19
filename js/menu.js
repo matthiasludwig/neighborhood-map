@@ -2,8 +2,12 @@
 * The menu items are toggled via jquery from here
 */
 
-$('#toggle').on('click', function(){
+$('.toggle').on('click', function(){
     mixpanel.track("Sidebar on mobile toggled");
+    $('.sidebar').toggleClass('open');
+})
+
+$('.toggleOnMenu').on('click', function(){
     $('.sidebar').toggleClass('open');
 })
 
