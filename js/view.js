@@ -53,6 +53,9 @@ function makeMarkerIcon(type) {
 function highlightListItem(marker, scrollIntoView) {
     selectedItem(marker.pdid);
     $('#resultList').show();
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+    setTimeout(function(){
+        marker.setAnimation(null);}, 2300);
     if (scrollIntoView) {
         var loc = document.getElementsByClassName('itemSelect');
         loc[0].scrollIntoView(true);

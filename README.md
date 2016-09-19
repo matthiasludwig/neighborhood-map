@@ -2,7 +2,7 @@
 
 
 The Neighborhood Map lets you view details for crime incidents in San Francisco, CA from January 2013 to today.
-You can view the Map at www.crimemap.org
+You can view the Map at [https://www.crimemap.org](https://www.crimemap.org) or downloading the repository and opening index.html
 
 
 In **Settings** the selected time and API Limit can be adjusted

@@ -96,8 +96,9 @@ var ViewModel = function(){
            beforeSend: function(){
                loadingState(true);
                apiLoadingTime = setTimeout(function(){
-                   console.log("It takes unusally long to get data from the API."); }, 7000);
+                   console.log("It takes unusally long to get data from the API.");
                    mixpanel.track("AJAX Data Request takes longer than 7sec");
+               }, 7000);
            },
            success: function(data){
                mixpanel.track("AJAX Data Request sucess");
