@@ -38,6 +38,7 @@ function makeMarkerIcon(type) {
             break;
         default:
         // This is due to the fact that the API has not a complete list of possible resolutions
+            mixpanel.track("Marker Icon was not defined: " + type);
             type = "NOT AVAILABLE";
     }
     var markerImage = {
@@ -59,5 +60,6 @@ function highlightListItem(marker, scrollIntoView) {
 }
 // Error handling in case the Goolge Maps api can not be reached
 function googleError() {
+    mixpanel.track("Google Maps Data Request Error: Google Maps not accesible");
     window.alert("The Google Maps API could not be loaded. Please try again later!");
 }

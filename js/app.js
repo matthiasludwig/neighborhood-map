@@ -97,8 +97,10 @@ var ViewModel = function(){
                loadingState(true);
                apiLoadingTime = setTimeout(function(){
                    console.log("It takes unusally long to get data from the API."); }, 7000);
+                   mixpanel.track("AJAX Data Request takes longer than 7sec");
            },
            success: function(data){
+               mixpanel.track("AJAX Data Request sucess");
                // Error handling if start date is after end date AND/OR the selection does not return any data
                if (data.length === 0) {
                    window.alert("An Error has occured! Please check your date Settings. Be aware that the available data is trailing the current day by approx. 10 days.")
@@ -122,12 +124,15 @@ var ViewModel = function(){
                switch (errorThrown) {
                    case "Bad Request":
                        window.alert("An Error has occured. Please check your values in the Settings menu!");
+                       mixpanel.track("AJAX Data Request Error: Bad Request");
                        break;
                    case "":
                         window.alert("The SF Open Data API is not accesible right now. Please try again later!")
+                        mixpanel.track("AJAX Data Request Error: Not accesible now");
                         break;
                    default:
                     window.alert("An unknown Error with the SF Open Data API has occured.");
+                    mixpanel.track("AJAX Data Request Error: Default Error");
                }
            }
        });
@@ -137,6 +142,7 @@ var ViewModel = function(){
         // This is a fallback of sorts, since mobile Safari is not respecting the min/max attribute of the html input field
         if (apiLimit < 0 || apiLimit > 3500)
         {
+            mixpanel.track("Number over 3500 OR under 0 selected by user");
             window.alert("Please choose a value between 0 and 3500 for the API Limit in the Settings view");
         }
         self.clearData(self.crimeData);
@@ -162,12 +168,12 @@ var ViewModel = function(){
     }
     // When a marker is clicked the list item is highlighted and zommed to on the map
     this.clickItem = function(listItem) {
+        mixpanel.track("Marker OR List item was clicked");
         highlightListItem(listItem.marker, false); // false means it does not scroll the selected list item into view
         map.setZoom(15);
         map.panTo(listItem.marker.position);
         populateInfoWindow(listItem.marker, largeInfowindow);
     }
-
     // Start the app
     this.getData(fromDate, toDate, apiLimit);
 }
