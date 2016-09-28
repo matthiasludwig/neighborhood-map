@@ -28,11 +28,13 @@ function makeMarkerIcon(type) {
             break;
         case "ARREST, CITED":
             break;
-        case "JUVENILE, BOOKED":
+        case "JUVENILE BOOKED":
             break;
         case "ARREST, BOOKED":
             break;
         case "NONE":
+            break;
+        case "UNFOUNDED":
             break;
         case "active":
             break;
