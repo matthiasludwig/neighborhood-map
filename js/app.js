@@ -5,8 +5,8 @@ var map;
 var largeInfowindow;
 var selectedItem = ko.observable();
 var loadingState = ko.observable(false);
-var fromDate = ko.observable(moment().subtract(14, 'days').format('YYYY[-]MM[-]DD'));
-var toDate = ko.observable(moment().subtract(14, 'days').format('YYYY[-]MM[-]DD'));
+var fromDate = ko.observable(moment().subtract(16, 'days').format('YYYY[-]MM[-]DD'));
+var toDate = ko.observable(moment().subtract(16, 'days').format('YYYY[-]MM[-]DD'));
 var apiLimit = 500;
 var apiLoadingTime;
 
