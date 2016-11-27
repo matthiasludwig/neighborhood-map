@@ -165,6 +165,7 @@ a:visited {
     width: 80%;
     display: flex;
     margin: auto;
+    padding: 10px;
 }
 
 #logos {
