@@ -82,12 +82,12 @@ var ViewModel = function(){
 
     this.getData = function(fromDate, toDate, limit) {
        $.ajax({
-           url: "https://data.sfgov.org/resource/cuks-n6tp.json",
+           url: "https://data.sfgov.org/resource/fjjd-jecq.json",
            type: "GET",
            data: {
-               "$limit" : limit,
-               "$where" : "date between '"+ fromDate() +"T00:00:00' and '" + toDate() + "T00:00:00'",
-               "$order" : "date DESC",
+               // "$limit" : limit,
+               // "$where" : "date between '"+ fromDate() +"T00:00:00' and '" + toDate() + "T00:00:00'",
+               // "$order" : "date DESC",
                "$$app_token" : "FOWqIJ6wgZFV3PBnSg7DKip6V"
            },
            // Loading animation
