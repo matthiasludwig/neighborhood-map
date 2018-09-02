@@ -1,6 +1,4 @@
-/*
-Global Variables delcared
-*/
+// Global Variables declared
 var map;
 var largeInfowindow;
 var selectedItem = ko.observable();
@@ -45,7 +43,7 @@ var Marker = function(data) {
         populateInfoWindow(this, largeInfowindow);
         highlightListItem(this, true);
     });
-}
+};
 
 // ViewModel is defined here
 var ViewModel = function(){
@@ -53,16 +51,16 @@ var ViewModel = function(){
 
     this.crimeData = ko.observableArray(); // This is the array that contains ALL markers that came from the server
     this.policeDistricts = ko.observableArray([
-        "All", "BAYVIEW", "CENTRAL", "INGLESIDE", "MISSION", "NORTHERN", "PARK", "RICHMOND", "SOUTHERN", "TARAVAL", "TENDERLOIN" // The Police Discricts are hard coded
+        "All", "BAYVIEW", "CENTRAL", "INGLESIDE", "MISSION", "NORTHERN", "PARK", "RICHMOND", "SOUTHERN", "TARAVAL", "TENDERLOIN" // The Police Districts are hard coded
     ]);
     this.filter = ko.observable("All"); // By default the filter shows all police districts with its incidents
     this.filteredData = this.crimeData.filter(function(x) {
-        if (self.filter() == "All") {
+        if (self.filter() === "All") {
             x.marker.setMap(map); // Sets all markers on the map
             return x; // Returns all the markers
         }
         else {
-            if (x.marker.pddistrict != self.filter()) {
+            if (x.marker.pddistrict !== self.filter()) {
                 x.marker.setMap(null); // If the marker is from a police district that is not selected, the marker is taken from the map
             }
             else {
@@ -96,15 +94,15 @@ var ViewModel = function(){
            beforeSend: function(){
                loadingState(true);
                apiLoadingTime = setTimeout(function(){
-                   console.log("It takes unusally long to get data from the API.");
+                   console.log("It takes unusually long to get data from the API.");
                    mixpanel.track("AJAX Data Request takes longer than 7sec");
                }, 7000);
            },
            success: function(data){
-               mixpanel.track("AJAX Data Request sucess");
+               mixpanel.track("AJAX Data Request success");
                // Error handling if start date is after end date AND/OR the selection does not return any data
                if (data.length === 0) {
-                   window.alert("An Error has occured! Please check your date Settings. Be aware that the available data is trailing the current day by approx. 10 days.")
+                   window.alert("An Error has occurred! Please check your date Settings. Be aware that the available data is trailing the current day by approx. 10 days.");
                    return;
                }
                data.forEach(function(data){
@@ -124,7 +122,8 @@ var ViewModel = function(){
                console.log("errorThrown is " + errorThrown);
                switch (errorThrown) {
                    case "Bad Request":
-                       window.alert("An Error has occured. Please check your values in the Settings menu!");
+                       // window.alert("An Error has occurred. Please check your values in the Settings menu!");
+                       window.alert("The City of San Francisco has temporarily disabled the crime data API. As soon as the API is functional again Crimemap.org will be updated.");
                        mixpanel.track("AJAX Data Request Error: Bad Request");
                        break;
                    case "":
