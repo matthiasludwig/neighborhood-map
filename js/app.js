@@ -125,15 +125,15 @@ var ViewModel = function(){
                switch (errorThrown) {
                    case "Bad Request":
                        // window.alert("An Error has occurred. Please check your values in the Settings menu!");
-                       window.alert("The City of San Francisco has temporarily disabled the crime data API. As soon as the API is functional again Crimemap.org will be updated.");
+                       // window.alert("The City of San Francisco has temporarily disabled the crime data API. As soon as the API is functional again Crimemap.org will be updated.");
                        mixpanel.track("AJAX Data Request Error: Bad Request");
                        break;
                    case "":
-                        window.alert("The SF Open Data API is not accesible right now. Please try again later!")
-                        mixpanel.track("AJAX Data Request Error: Not accesible now");
+                        window.alert("The SF Open Data API is not accessible right now. Please try again later!")
+                        mixpanel.track("AJAX Data Request Error: Not accessible now");
                         break;
                    default:
-                    window.alert("An unknown Error with the SF Open Data API has occured.");
+                    window.alert("An unknown Error with the SF Open Data API has occurred.");
                     mixpanel.track("AJAX Data Request Error: Default Error");
                }
            }
