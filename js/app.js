@@ -23,21 +23,22 @@ function init() {
 
 var Marker = function(data) {
     // Create a marker per location, and put into markers array.
+    console.log("Creating Marker!");
     this.marker = new google.maps.Marker({
-         position: {lat: parseFloat(data.y), lng: parseFloat(data.x)},
-         title: data.descript,
-         category: data.category,
-         address: data.address,
-         pddistrict: data.pddistrict,
-         pdid: data.pdid,
+         position: {lat: parseFloat(data.latitude), lng: parseFloat(data.longitude)},
+         title: data.incident_description,
+         category: data.incident_category,
+         address: data.intersection,
+         pddistrict: data.analysis_neighborhood,
+         pdid: data.cad_number,
          resolution: data.resolution,
-         dayofweek: data.dayofweek,
-         time: formatTime(data.time),
+         dayofweek: data.incident_day_of_week,
+         time: formatTime(data.report_datetime),
          map: map,
          date: moment(data.date).format("MMMM Do YYYY"),
          icon: makeMarkerIcon(data.resolution),
          animation: google.maps.Animation.DROP,
-         id: data.i
+         id: data.cnn
     });
     this.marker.addListener('click', function() {
         populateInfoWindow(this, largeInfowindow);
@@ -69,8 +70,8 @@ var ViewModel = function(){
             }
         }
     });
-    /* The following two computed observable are merely giving some granular "stastic" about the number of incidents for the selected police district
-    as well as the percentage of the total incidents*/
+    /* The following two computed observable are merely giving some granular "statistic" about the number of incidents
+    for the selected police district as well as the percentage of the total incidents*/
     this.numberIncidents = ko.computed(function() {
         return ("has " + self.filteredData().length + " incidents.");
     });
@@ -82,10 +83,10 @@ var ViewModel = function(){
 
     this.getData = function(fromDate, toDate, limit) {
        $.ajax({
-           url: "https://data.sfgov.org/resource/fjjd-jecq.json",
+           url: "https://data.sfgov.org/resource/wg3w-h783.json",
            type: "GET",
            data: {
-               // "$limit" : limit,
+               "$limit" : limit,
                // "$where" : "date between '"+ fromDate() +"T00:00:00' and '" + toDate() + "T00:00:00'",
                // "$order" : "date DESC",
                "$$app_token" : "FOWqIJ6wgZFV3PBnSg7DKip6V"
@@ -100,6 +101,7 @@ var ViewModel = function(){
            },
            success: function(data){
                mixpanel.track("AJAX Data Request success");
+               console.log(data); // Used for debugging the Requests
                // Error handling if start date is after end date AND/OR the selection does not return any data
                if (data.length === 0) {
                    window.alert("An Error has occurred! Please check your date Settings. Be aware that the available data is trailing the current day by approx. 10 days.");

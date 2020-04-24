@@ -79,40 +79,40 @@
                             </div>
                         </div>
                         <!-- Settings Menu -->
-                        <div class="menu">
-                            <p class="menuButton"><i class="fa fa-cogs" aria-hidden="true">&nbsp;</i>Settings</p>
-                            <div class="collapsable">
-                                <div class="innerContent">
-                                    <p class="subHeading"><i class="fa fa-filter" aria-hidden="true"></i> - Filter by police district</p>
-                                    <select data-bind="options: policeDistricts, value: filter"></select>
-                                    <br>
-                                    <p><span data-bind="text: filter"></span>&nbsp;<span data-bind="text: numberIncidents"></span><br><span data-bind="text: percentageIncidents"></span></p>
-                                    <hr>
-                                    <p class="subHeading"><i class="fa fa-calendar-o" aria-hidden="true"></i> - Adjust date</p>
-                                    <form data-bind="submit: newData">
-                                        <p class="optionHeading">From: </p>
-                                        <input type="date" name="date" data-bind="value: fromDate">
-                                        <p class="optionHeading">To: </p>
-                                        <input type="date" name="date" data-bind="value: toDate">
-                                        <hr class="subDivider">
-                                        <span>Limit: </span><input type="number" pattern="\d*" name="quantity" min="0" max="3500" step="100" data-bind="value: apiLimit"><br>
-                                        <p class="tipContent">A high limit might slow down the browser.<br>3500 is the current limit of incidents per request.</p>
-                                        <br>
-                                        <button type="submit">Update</button>
-                                    </form>
-                                    <br>
-                                </div>
-                            </div>
-                        </div>
+<!--                        <div class="menu">-->
+<!--                            <p class="menuButton"><i class="fa fa-cogs" aria-hidden="true">&nbsp;</i>Settings</p>-->
+<!--                            <div class="collapsable">-->
+<!--                                <div class="innerContent">-->
+<!--                                    <p class="subHeading"><i class="fa fa-filter" aria-hidden="true"></i> - Filter by police district</p>-->
+<!--                                    <select data-bind="options: policeDistricts, value: filter"></select>-->
+<!--                                    <br>-->
+<!--                                    <p><span data-bind="text: filter"></span>&nbsp;<span data-bind="text: numberIncidents"></span><br><span data-bind="text: percentageIncidents"></span></p>-->
+<!--                                    <hr>-->
+<!--                                    <p class="subHeading"><i class="fa fa-calendar-o" aria-hidden="true"></i> - Adjust date</p>-->
+<!--                                    <form data-bind="submit: newData">-->
+<!--                                        <p class="optionHeading">From: </p>-->
+<!--                                        <input type="date" name="date" data-bind="value: fromDate">-->
+<!--                                        <p class="optionHeading">To: </p>-->
+<!--                                        <input type="date" name="date" data-bind="value: toDate">-->
+<!--                                        <hr class="subDivider">-->
+<!--                                        <span>Limit: </span><input type="number" pattern="\d*" name="quantity" min="0" max="3500" step="100" data-bind="value: apiLimit"><br>-->
+<!--                                        <p class="tipContent">A high limit might slow down the browser.<br>3500 is the current limit of incidents per request.</p>-->
+<!--                                        <br>-->
+<!--                                        <button type="submit">Update</button>-->
+<!--                                    </form>-->
+<!--                                    <br>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
                         <!-- Crime Data List -->
-                        <div class="menu">
-                            <p class="menuButton"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Results</p>
-                            <div class="collapsable" id="resultList">
-                                <ul class="item" data-bind="foreach: filteredData ">
-                                    <li class="listItem" data-bind="event: { mouseover: $parent.mouseOver, mouseout: $parent.mouseOut, click: $parent.clickItem}, css: { 'itemSelect': marker.pdid === selectedItem() }"><span data-bind="text: marker.address"></span>: <span data-bind="text: marker.category"></span></li>
-                                </ul>
-                            </div>
-                        </div>
+<!--                        <div class="menu">-->
+<!--                            <p class="menuButton"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Results</p>-->
+<!--                            <div class="collapsable" id="resultList">-->
+<!--                                <ul class="item" data-bind="foreach: filteredData ">-->
+<!--                                    <li class="listItem" data-bind="event: { mouseover: $parent.mouseOver, mouseout: $parent.mouseOut, click: $parent.clickItem}, css: { 'itemSelect': marker.pdid === selectedItem() }"><span data-bind="text: marker.address"></span>: <span data-bind="text: marker.category"></span></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
                 </div>
             </div>
@@ -131,7 +131,7 @@
         <script src="js/view.js"></script>
         <script src="js/helper.js"></script>
         <script src="js/menu.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgKZclTlBcjeCW3cS8uMzbVOB6f6Act3A&callback=init" onerror="googleError()" async defer></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9MHeDzkAS9Qnj5KLTdyt2wgOV-6_TsIM&callback=init" onerror="googleError()" async defer></script>
         <script async>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
